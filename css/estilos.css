@@ -4,6 +4,7 @@ body
 	border-radius: 5px;
 	margin: 0 auto;
 	max-width: 1024px;
+	min-width: 1024px;
 }
 
 footer
@@ -27,14 +28,10 @@ header .page-header
 	margin-left: 15px;
 }
 
-img
+#Leermas
 {
-	border-radius: 500px;
+	display: none;
 }
-
-
-
-
 #altaUsuarios
 {
 	display: none; /*Ocultamos el DIV*/
@@ -88,10 +85,10 @@ img
 }
 
 #logotec{
-	/*float: left;*/
-	position: relative;
-	top: -100px;
-	left: 800px;
+	margin-top:15px;
+	position: absolute;
+	top: -10px;
+	left: 1000px;
 	width: 120px;
 	height: 120px;
 }
@@ -115,9 +112,31 @@ img
 }
 
 #fecha{
-	color: red;
+	color: gray;
 }
+#imgInicio
+{
+	position: relative;
+	margin-left: 200px;
+	width: 642px;
+	height: 429px;
+}
+#imgMini
+{
+	width: 250px;
+	height: 200px;
+}
+#seccionInfo article
+{
+	margin: auto;
+	display: inline-block;
+	vertical-align: top;
+	width: 33%;
+	padding:20px 20px 20px 20px; 
+	position: relative;
 
+
+}
 .page-header{
 	height: 130;
 }
