@@ -82,33 +82,33 @@ function consultaUsuario($usuario)
 	return $respuesta;
 }
 
-function GuardaUsuario()
+function GuardaProyecto()
 {
-	$usuario     = GetSQLValueString($_POST["usuario"],"text");
-	$nombre      = GetSQLValueString($_POST["nombre"],"text");
-	$apellido    = GetSQLValueString($_POST["apellido"],"text");
-	$tipousuario = GetSQLValueString($_POST["tipousuario"],"long");
-	$estatus     = GetSQLValueString($_POST["estatus"],"text");
-	$clave       = GetSQLValueString(md5($_POST["clave"]),"text");
-	$repiteclave = GetSQLValueString(md5($_POST["repiteclave"]),"text");
+	$nombre_empresa     = GetSQLValueString($_POST["usuario"],"text");
+	$direccion      = GetSQLValueString($_POST["direccion"],"text");
+	$telefono    = GetSQLValueString($_POST["telefono"],"text");
+	$encargado = GetSQLValueString($_POST["encargado"],"long");
+	$nombre_proyecto     = GetSQLValueString($_POST["nombre_proyecto"],"text");
+	$carrera       = GetSQLValueString($_POST["carrera"],"text");
+	$cupos = GetSQLValueString($_POST["cupos"],"text");
 	$respuesta   = false; 
 	if($clave == $repiteclave)
 	{
 		$conexion    = conectaBD();
 		if(consultaUsuario($usuario) == false)
 		{
-			$consulta = sprintf("insert into usuarios values(%s,%s,%s,%s,%d,%s)",$usuario,$clave,$nombre,$apellido,$tipousuario,$estatus);
+			$consulta = sprintf("insert into proyectos values(%s,%s,%s,%s,%d,%s)",$nombre_empresa,$direccion,$telefono,$encargado,$nombre_proyecto,$carrera,$cupos);
 			$resconsulta = mysql_query($consulta);
 			if(mysql_affected_rows() > 0)
 				$respuesta = true;
 		}
-		else
-		{
-			$consulta = sprintf("update usuarios set clave=%s,nombre=%s,apellido=%s,tipousuario=%d,estatus=%s where usuario=%s",$clave,$nombre,$apellido,$tipousuario,$estatus,$usuario);
-			$resconsulta = mysql_query($consulta);
-			if(mysql_affected_rows() > 0)
-				$respuesta = true;
-		}
+		// else
+		// {
+		// 	$consulta = sprintf("update proyectos set clave=%s,nombre=%s,apellido=%s,tipousuario=%d,estatus=%s where usuario=%s",$clave,$nombre,$apellido,$tipousuario,$estatus,$usuario);
+		// 	$resconsulta = mysql_query($consulta);
+		// 	if(mysql_affected_rows() > 0)
+		// 		$respuesta = true;
+		// }
 	}
 	$salidaJSON = array('respuesta' => $respuesta);
 	print json_encode($salidaJSON);
@@ -161,7 +161,7 @@ switch ($opcion) {
 	case 'validaentrada':
 		ValidaEntrada();
 		break;
-	case 'guardausuario':
+	case 'guardaproyecto':
 		GuardaUsuario();
 		break;
 	case 'mostrarDatosUsuario':

@@ -147,9 +147,9 @@ var inicio = function()
 
 	var DivUsuarios = function()
 	{
-		$("#altaUsuarios").show("slow");
+		$("#altaProyectos").show("slow");
 		$("#btnGuardaUsuario").show();
-		$("#btnEliminaUsuario").hide();
+		$("#btnEliminaProyecto").hide();
 	}
 
 		var Ingresar = function()
@@ -167,18 +167,17 @@ var inicio = function()
 
 	}
 
-	var GuardaUsuario = function()
+	var GuardaProyecto = function()
 	{
-		var u = $("#txtNombreUsuario").val();
-		var n = $("#txtNombre").val();
-		var a = $("#txtApellido").val();
-		var t = $("#txtTipoUsuario").val();
-		var e = $("#txtEstatus").val();
-		var c = $("#txtClaveUsuario").val();
-		var r = $("#txtRepiteClave").val();
-		if(c == r)
-		{
-			var parametros = "opc=guardausuario"+"&usuario="+u+"&nombre="+n+"&apellido="+a+"&tipousuario="+t+"&estatus="+e+"&clave="+c+"&repiteclave="+r+"&id="+Math.random();
+		var u = $("#txtNombreEmpresa").val();
+		var n = $("#txtDireccion").val();
+		var a = $("#txtTelefono").val();
+		var t = $("#txtEncargado").val();
+		var e = $("#txtNombreProyecto").val();
+		var c = $("#txtCarrrera").val();
+		var r = $("#txtCupos").val();
+		
+			var parametros = "opc=guardaproyecto"+"&nombre_empresa="+u+"&direccion="+n+"&telefono="+a+"&encargado="+t+"&nombre_proyecto="+e+"&carrera="+c+"&cupos="+r+"&id="+Math.random();
 			$.ajax({
 				cache:false,
 				type: "POST",
@@ -188,18 +187,15 @@ var inicio = function()
 				success: function(response){
 					if(response.respuesta == true)
 					{
-						alert("Usuario actualizado con éxito");
+						alert("Proyecto registrado con éxito");
 					}
 					else
-						alert("No se ha podido actualizar al usuario");
+						alert("No se ha podido registrar el proyecto");
 				},
 				error: function(xhr,ajaxOption,x){
 					alert("Sin conexión");
 				}
 			});
-		}
-		else
-			alert("Las claves no coinciden");
 	}
 
 	var mostrarDatosUsuario = function()
@@ -271,7 +267,7 @@ var inicio = function()
 	$("#txtClave").on("keypress",teclaClave);
 	$("#btnDivUsuarios").on("click",DivUsuarios);
 	$("#btnDivBanco").on("click",traeBanco);
-	$("#btnGuardaUsuario").on("click",GuardaUsuario);
+	$("#btnGuardaProyecto").on("click",GuardaProyecto);
 	$("#txtNombreUsuario").on("keypress",teclaNombreUsuario);
 	$("#btnDivDocumentacion").on("click",traeDocumentacion);
 	$("#btnEliminaUsuario").on("click",EliminaUsuario);
@@ -279,6 +275,7 @@ var inicio = function()
 	// Nuevas Acciones
 
 	$("#btnIngresar").on("click",Ingresar);
+	$("#btnRegistrar").on("click",DivUsuarios);
 
 
 
