@@ -1,10 +1,18 @@
 body
 {
+<<<<<<< HEAD
   /*border: 1px solid #000088;*/
   border-radius: 5px;
   margin: 0 auto;
   max-width: 1024px;
   min-width: 1024px;
+=======
+	/*border: 1px solid #000088;*/
+	border-radius: 5px;
+	margin: 0 auto;
+	max-width: 1024px;
+	min-width: 1024px;
+>>>>>>> origin/test
 }
 
 footer
@@ -27,11 +35,20 @@ header .page-header
 {
   margin-left: 15px;
 }
+<<<<<<< HEAD
 img
 {
   border-radius: 500px;
 }
 #altaProyectos
+=======
+
+#Leermas
+{
+	display: none;
+}
+#altaUsuarios
+>>>>>>> origin/test
 {
   display: none; /*Ocultamos el DIV*/
   margin: 0 auto;
@@ -85,12 +102,21 @@ img
 }
 
 #logotec{
+<<<<<<< HEAD
   margin-top:15px;
   position: absolute;
   top: -10px;
   left: 1000px;
   width: 120px;
   height: 120px;
+=======
+	margin-top:15px;
+	position: absolute;
+	top: -10px;
+	left: 1000px;
+	width: 120px;
+	height: 120px;
+>>>>>>> origin/test
 }
 
 #PlanNuevo{
@@ -112,6 +138,7 @@ img
 }
 
 #fecha{
+<<<<<<< HEAD
   color: gray;
 }
 #imgInicio
@@ -139,6 +166,32 @@ img
   padding:20px 20px 20px 20px; 
   position: relative;
 
+=======
+	color: gray;
+}
+#imgInicio
+{
+	position: relative;
+	margin-left: 200px;
+	width: 642px;
+	height: 429px;
+}
+#imgMini
+{
+	width: 250px;
+	height: 200px;
+}
+#seccionInfo article
+{
+	margin: auto;
+	display: inline-block;
+	vertical-align: top;
+	width: 33%;
+	padding:20px 20px 20px 20px; 
+	position: relative;
+
+
+>>>>>>> origin/test
 }
 .page-header{
   height: 130;

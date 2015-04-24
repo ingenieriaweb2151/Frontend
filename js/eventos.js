@@ -105,6 +105,18 @@ var inicio = function()
 
 	}
 
+	var traeLeermas = function()
+
+	{
+		
+		$("#btnLeermas").click(function(event) { 
+                       event.preventDefault();
+                      $("#Leermas").toggle(); });
+
+
+
+	}
+
 
 		var traeDocumentacion = function()
 	{
@@ -235,7 +247,6 @@ var inicio = function()
 		}		
 	}
 
-
 	var EliminaUsuario = function()
 	{
 		var u = $("#txtNombreUsuario").val();
@@ -271,6 +282,7 @@ var inicio = function()
 	$("#txtNombreUsuario").on("keypress",teclaNombreUsuario);
 	$("#btnDivDocumentacion").on("click",traeDocumentacion);
 	$("#btnEliminaUsuario").on("click",EliminaUsuario);
+	$("#btnLeermas").on("click", Leermas);
 
 	// Nuevas Acciones
 
