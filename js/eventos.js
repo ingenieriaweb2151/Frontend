@@ -5,7 +5,7 @@ var inicio = function()
 	{
 		var u = $("#txtUsuario").val();
 		var c = $("#txtClave").val();
-		var parametros = "opc=validaentrada"+"&usuario="+u+"&clave="+c+"&id="+Math.random();
+		var parametros = "opc=validaAluProy"+"&aluctr="+u+"&alupas="+c+"&id="+Math.random();
 		if(u!="" && c!="")
 		{
 			$.ajax({
@@ -24,8 +24,10 @@ var inicio = function()
 						$("#btnIngresar").hide("slow");
 
 						alert("Bienvenido: "+response.nombre);
-
-						validaTipoUsuario(response);
+						if(response.pnom != null){
+							llenarTablaProy(true);
+						}
+						else llenarTablaProy(false);
 						anoalumno();
 
 						$("#bienvenido").show("slow");
@@ -44,21 +46,39 @@ var inicio = function()
 		// 	$("nav").show("slow");
 		// }
 		}
+	var llenarTablaProy = function(cargado){
+		var c = cargado;
+		var parametros = "opc=llenarTablaProy"+"&cargado="+c+"&id="+Math.random();
+		$.ajax({
+				cache:false,
+				url: "data/funciones.php",
+				type: "POST",
+				dataType: "json",
+				data: parametros,
+				success: function(response){
+					if(response.respuesta == true) 
+					{
+						$("#tablaproy").html(response.renglones);
+					}
+					else
+						alert("Nombre de usuario y/o contraseña incorrectos");
+				}
+			});
+	}
 
+	var validaAluProy = function(response){
+			
+		// if (nomproy != null){
+		// 	document.getElementById("tusuario").innerHTML = "Maestro: "
+		// 	$("#btnRegistrar").show("slow");s
+		// 	$("#proyectosbox").show("slow");
 
-	var validaTipoUsuario = function(response){
-		var tipoUsuario = response.tipousuario;
-		if (tipoUsuario == 1){
-			document.getElementById("tusuario").innerHTML = "Maestro: "
-			$("#btnRegistrar").show("slow");
-			$("#proyectosbox").show("slow");
-
-			//Cambio de nombre de botones
-			document.getElementById("btnEntregas").innerHTML = "Revisiones"
-		}
-		else{
-			document.getElementById("tusuario").innerHTML = "Alumno: "
-		}
+		// 	//Cambio de nombre de botones
+		// 	document.getElementById("btnEntregas").innerHTML = "Revisiones"
+		// }
+		// else{
+		// 	document.getElementById("tusuario").innerHTML = "Alumno: "
+		// }
 	}
 
 	var anoalumno = function (){
