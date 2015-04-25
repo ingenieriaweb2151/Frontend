@@ -51,7 +51,7 @@ var inicio = function()
 		if (tipoUsuario == 1){
 			document.getElementById("tusuario").innerHTML = "Maestro: "
 			$("#btnRegistrar").show("slow");
-
+			$("#proyectosbox").show("slow");
 
 			//Cambio de nombre de botones
 			document.getElementById("btnEntregas").innerHTML = "Revisiones"
@@ -91,6 +91,9 @@ var inicio = function()
 		$("#banco").hide();
 		$("#entregas").hide();
 		$("#panelEntrada").hide("slow");
+		$("#altaProyectos").hide("slow");
+		$("#entregas").hide("slow");
+
 
 
 	}
@@ -102,19 +105,8 @@ var inicio = function()
 		$("#entregas").hide();
 		$("#banco").show();
 		$("#panelEntrada").hide("slow");
-
-	}
-
-	var traeLeermas = function()
-
-	{
-		
-		$("#btnLeermas").click(function(event) { 
-                       event.preventDefault();
-                      $("#Leermas").toggle(); });
-
-
-
+		$("#altaProyectos").hide("slow");
+		$("#entregas").hide("slow");
 	}
 
 
@@ -125,7 +117,8 @@ var inicio = function()
 		$("#banco").hide();
 		$("#entregas").hide();
 		$("#panelEntrada").hide("slow");
-
+		$("#altaProyectos").hide("slow");
+		$("#entregas").hide("slow");
 	}
 
 	  var traeEntregas = function ()
@@ -135,7 +128,7 @@ var inicio = function()
 		$("#documentacion").hide();
 		$("#banco").hide();
 		$("#panelEntrada").hide("slow");
-
+		$("#altaProyectos").hide("slow");
 	  }
 
 
@@ -160,7 +153,7 @@ var inicio = function()
 	var DivUsuarios = function()
 	{
 		$("#altaProyectos").show("slow");
-		$("#btnGuardaUsuario").show();
+		$("#btnGuardaProyecto").show();
 		$("#btnEliminaProyecto").hide();
 	}
 
@@ -208,6 +201,7 @@ var inicio = function()
 					alert("Sin conexión");
 				}
 			});
+		$("#altaProyectos").hide("slow");
 	}
 
 	var mostrarDatosUsuario = function()
@@ -247,6 +241,7 @@ var inicio = function()
 		}		
 	}
 
+
 	var EliminaUsuario = function()
 	{
 		var u = $("#txtNombreUsuario").val();
@@ -282,7 +277,6 @@ var inicio = function()
 	$("#txtNombreUsuario").on("keypress",teclaNombreUsuario);
 	$("#btnDivDocumentacion").on("click",traeDocumentacion);
 	$("#btnEliminaUsuario").on("click",EliminaUsuario);
-	$("#btnLeermas").on("click", Leermas);
 
 	// Nuevas Acciones
 
