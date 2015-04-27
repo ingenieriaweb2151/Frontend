@@ -195,6 +195,7 @@ function ValidaAluProy(){
 	//Codificamos a JSON el array asociativo.
 	print json_encode($salidaJSON);
 }
+
 function LlenarTablaProy(){
 	$conexion = conectaBD();
 	//Preparar la consulta SQL
@@ -253,7 +254,6 @@ function LlenarTablaProy(){
 			$renglones.="<input type='checkbox' name=".$registro["nombreproy"].">";
 			$renglones.="</td>";
 			$renglones.="</tr>";
-
 		}
 	//}
 	$salidaJSON = array('respuesta'	=> $res,

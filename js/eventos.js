@@ -58,10 +58,13 @@ var inicio = function()
 				success: function(response){
 					if(response.respuesta == true) 
 					{
+						alert("Tabla proyecto");
 						$("#tablaproy").html(response.renglones);
+						$("#tablaproy").show();
 					}
 					else
-						alert("Nombre de usuario y/o contraseña incorrectos");
+						alert("No hay proyectos");
+						$("#tablaproy").html(response.renglones);
 				}
 			});
 	}
@@ -127,6 +130,8 @@ var inicio = function()
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
 		$("#entregas").hide("slow");
+		llenarTablaProy(true);
+
 	}
 
 
