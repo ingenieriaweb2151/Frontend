@@ -37,7 +37,7 @@ function conectaBD($tipoUsuario)
 	//Servidor, Usuario, Contraseña
 	$conexion =  mysql_connect("localhost",$tipoUsuario,"");
 	//Seleccionamos la BD
-	mysql_select_db("residencias");
+	mysql_select_db("residenciasitc");
 	return $conexion;
 }	
 
@@ -155,8 +155,9 @@ function EliminaUsuario()
 
 function ValidaAluProy(){
 	$u = GetSQLValueString($_POST["aluctr"],"text");
-	$c = GetSQLValueString(md5($_POST["alupas"]),"text");
+	$c = GetSQLValueString($_POST["alupas"],"text");
 	$tipousuario = GetSQLValueString($_POST["tu"],"text");
+
 	//Conectar a la BD
 	$conexion = conectaBD($tipousuario);
 	//Preparar la consulta SQL
@@ -289,11 +290,6 @@ switch ($opcion) {
 		break;
 }
 ?>
-
-
-
-
-
 
 
 
