@@ -5,47 +5,56 @@ var inicio = function()
 	{
 		var u = $("#txtUsuario").val();
 		var c = $("#txtClave").val();
-		var parametros = "opc=validaAluProy"+"&aluctr="+u+"&alupas="+c+"&id="+Math.random();
-		if(u!="" && c!="")
+		var t = $("#ddlTipoUsuario").val();
+		var parametros = "opc=validaAluProy"+"&tu="+t+"&aluctr="+u+"&alupas="+c+"&id="+Math.random();
+		if (t!="alumno" || t!="asesor" || t!="divestpro" || t!="vinculacion")
 		{
-			$.ajax({
-				cache:false,
-				url: "data/funciones.php",
-				type: "POST",
-				dataType: "json",
-				data: parametros,
-				success: function(response){
-					if(response.respuesta == true) 
-					{
-						$("#panelEntrada").hide("slow");
-						$("#nav1").show("slow");
-						$("#btnEntregas").show("slow");
-						$("#informacion").show("slow");
-						$("#btnIngresar").hide("slow");
-
-						alert("Bienvenido: "+response.nombre);
-						if(response.pnom != null){
-							llenarTablaProy(true);
-						}
-						else llenarTablaProy(false);
-						anoalumno();
-
-						$("#bienvenido").show("slow");
-						document.getElementById("usuario").innerHTML = response.nombre;
-					}
-					else
-						alert("Nombre de usuario y/o contraseña incorrectos");
-				}
-			});
+			alert("Tipo de usuario inválido");
 		}
 		else
-			alert("Llene todos campos");
+		{
+			if(u!="" && c!="")
+			{
+				$.ajax({
+					cache:false,
+					url: "data/funciones.php",
+					type: "POST",
+					dataType: "json",
+					data: parametros,
+					success: function(response){
+						if(response.respuesta == true) 
+						{
+							$("#panelEntrada").hide("slow");
+							$("#nav1").show("slow");
+							$("#btnEntregas").show("slow");
+							$("#informacion").show("slow");
+							$("#btnIngresar").hide("slow");
+
+							alert("Bienvenido: "+response.nombre);
+							if(response.pnom != null){
+								llenarTablaProy(true);
+							}
+							else llenarTablaProy(false);
+							anoalumno();
+
+							$("#bienvenido").show("slow");
+							document.getElementById("usuario").innerHTML = response.nombre;
+						}
+						else
+							alert("Nombre de usuario y/o contraseña incorrectos");
+					}
+				});
+			}
+			else
+				alert("Llene todos campos");
+		}
 		// if(u=="pw" && c=="clave")
 		// {
 		// 	$("#panelEntrada").hide("slow");
 		// 	$("nav").show("slow");
 		// }
-		}
+	}
+	
 	var llenarTablaProy = function(cargado){
 		var c = cargado;
 		var parametros = "opc=llenarTablaProy"+"&cargado="+c+"&id="+Math.random();
@@ -312,6 +321,18 @@ var inicio = function()
 
 }
 $(document).on("ready",inicio);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
