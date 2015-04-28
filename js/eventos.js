@@ -7,7 +7,7 @@ var inicio = function()
 		var c = $("#txtClave").val();
 		var t = $("#ddlTipoUsuario").val();
 		var parametros = "opc=validaAluProy"+"&tu="+t+"&aluctr="+u+"&alupas="+c+"&id="+Math.random();
-		if (t!="alumno" || t!="asesor" || t!="divestpro" || t!="vinculacion")
+		if (t!="alumno" && t!="asesor" && t!="divestpro" && t!="vinculacion")
 		{
 			alert("Tipo de usuario inválido");
 		}
