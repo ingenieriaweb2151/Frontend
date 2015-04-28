@@ -38,7 +38,12 @@ var inicio = function()
 							anoalumno();
 
 							$("#bienvenido").show("slow");
+							
 							document.getElementById("usuario").innerHTML = response.nombre;
+
+							var options = document.getElementById("ddlTipoUsuario").getElementsByTagName("option");
+    						var optionHTML = options[document.getElementById("ddlTipoUsuario").selectedIndex].innerHTML;
+							document.getElementById("tusuario").innerHTML = optionHTML+":";
 						}
 						else
 							alert("Nombre de usuario y/o contraseña incorrectos");
@@ -321,18 +326,6 @@ var inicio = function()
 
 }
 $(document).on("ready",inicio);
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
