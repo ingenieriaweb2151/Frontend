@@ -5,6 +5,7 @@ body
   margin: 0 auto;
   max-width: 1024px;
   min-width: 1024px;
+  background-color: #eee;
 }
 
 footer
@@ -133,7 +134,7 @@ img
   width: 250px;
   height: 200px;
 }
-#seccionInfo article
+.seccionInfo article
 {
   margin: auto;
   display: inline-block;
@@ -155,6 +156,22 @@ img
 
 .usuarios{
   text-align: right;
+}
+
+.justificar{
+  text-align:justify; 
+  margin-bottom:0px;
+}
+
+.textoPro{
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.lista{
+  text-align:left;
+  font-size: 18px;
+  font-weight: 200;
 }
 
 
