@@ -304,6 +304,19 @@ var inicio = function()
 		});
 	}
 
+	/*var calisBtn = function()
+	{
+		$("#art1").hide("slow");
+		$("#art3").hide("slow");
+		document.getElementById("art2").style.width = "800px";
+	}*/
+	var cambiaTexto = function (){
+		if (this.innerHTML == "Ver más")
+			this.innerHTML = "Ver menos";
+		else
+			this.innerHTML = "Ver más";
+	}
+
 	//Configuramos los eventos.
 	$("#btnEntrar").on("click",validaUsuario);
 	$("#btnInicio").on("click",traeInicio);
@@ -321,6 +334,9 @@ var inicio = function()
 
 	$("#btnIngresar").on("click",Ingresar);
 	$("#btnRegistrar").on("click",DivUsuarios);
+	$("#lm1").on("click",cambiaTexto);
+	$("#lm2").on("click",cambiaTexto);
+	$("#lm3").on("click",cambiaTexto);
 
 
 
