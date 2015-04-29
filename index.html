@@ -5,8 +5,9 @@
 	<title>Instituto Tecnológico de Culiacán - Residencias Profesionales</title>
 	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="css/estilos.css">
-
 	<script src="js/jquery-2.1.1.js"></script>
+
+	<script src="css/bootstrap/js/bootstrap.js"></script>
 	<script src="js/eventos.js"></script>
 </head>
 <body>
@@ -57,56 +58,69 @@
     
 	<div id="informacion" class="jumbotron">
 		<h2 id="rp">RESIDENCIAS PROFESIONALES</h2>
-  <h4> Fecha de inicio para solicitar residencias profesionales:<small id="fecha"> XX/XX/XXXX </ small> </ h4>
+  <h4> Fecha de inicio para solicitar residencias profesionales:<small id="fecha"> XX/XX/XXXX </small> </h4>
   	<br><br>
   	<img id="imgInicio" class= "img-rounded" src="img/residencias.png"> <br><br>
-<section id="seccionInfo">
-		<article>
-
-	  				<img id="imgMini" class= "img-rounded" src="img/residencias3.png">
+<section class="seccionInfo">
+<article><img id="imgMini" class= "img-rounded" src="img/residencias3.png"></article>
+<article><img id="imgMini" class= "img-rounded" src="img/requisitos.png"></article>
+<article><img id="imgMini" class= "img-rounded" src="img/residencias1.png"/></article>
+</section>
+<section class="seccionInfo">
+		<article id="art1">	  				
   					<div class="caption">
   						<h3>¿Qué son las Residencias Profesionales?</h3>
-  							<p>Se concibe la residencia profesional como una estrategia educativa, con carácter curricular, que permite al estudiante, aun estando en proceso de formación, incorporarse profesionalmente a los sectores productivos de bienes y servicios, a través del desarrollo de un proyecto, asesorado por instancias académicas e instancias externas.
-  							<br>
-							El desarrollo de la residencia profesional puede representar una forma de transitar entre la teoría y la práctica.</p>
-  							<p><button class="btn btn-primary"role="button">Leer más</button>
-  					</div>			
-  							</p>  							 
+  							<div class="textoPro justificar"> 
+  								Se concibe la residencia profesional como una estrategia educativa, con carácter curricular, que permite al estudiante, aun estando en proceso de formación,
+  							</div>
+  							<div id="acordeon1" class="collapse textoPro justificar">
+  								incorporarse profesionalmente a los sectores productivos de bienes y servicios, a través del desarrollo de un proyecto, asesorado por instancias académicas e instancias externas.
+  								El desarrollo de la residencia profesional puede representar una forma de transitar entre la teoría y la práctica.
+  							</div>
+							<button id="lm1" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#acordeon1">Ver más</button>
+  					</div>	 													 
   		</article>
-  	<article>
-  				<img id="imgMini" class= "img-rounded" src="img/requisitos.png">
+  	<article id="art2">
+  				
   					<div class="caption ">
-  						<h3>¿Cuales son los Requisitos?</h3>
-  						<div class="comentario">
-  							<p>El alumno que ha cubierto el 75% del total de sus créditos puede solicitar la realización de sus Residencias Profesionales mediante los siguientes mecanismos: <br>
-
+  						<h3 style="height:78px;">¿Cuales son los Requisitos?</h3>
+						<div class="textoPro justificar"> 
+							El alumno que ha cubierto el 75% del total de sus créditos puede solicitar la realización de sus Residencias Profesionales mediante los siguientes mecanismos: <br/><br/> </div>
+						<div id="acordeon2" class="collapse textoPro justificar">
 							A través de su selección en el banco de proyectos de la coordinación respectiva.
-							Proponiendo su propio tema directamente a la División de Estudios Profesionales, la que turnara al Departamento Académico para su análisis,
-							Presentando a la División de Estudios Profesionales su situación como trabajador de alguna empresa, para que se dictamine la correspondencia entre las actividades que realiza y las de un proyecto de Residencias Profesionales.
+							Proponiendo su propio tema directamente a la División de
+							Estudios Profesionales, la que turnara al Departamento Académico para su análisis,
+							Presentando a la División de Estudios Profesionales su situación como trabajador de alguna empresa, para que se dictamine la correspondencia entre las actividades que realiza y las de un proyecto de Residencias Profesionales.<br/>
 							En los casos en que el alumno propone su propio proyecto o somete a consideración su situación como trabajador es conveniente que su propuesta de proyecto de Residencias Profesionales con tenga la siguiente información:
-							<br>
-							Nombre y objetivo del proyecto. <br>
-							Cronograma preliminar de actividades. <br>
-							Descripción detallada de las actividades. <br>
-							Lugar donde se realizará el proyecto. <br>
-							Información de la empresa o institución donde se desarrollara el trabajo.</p> </div>
-  							<p><button class="btn btn-primary"role="button">Leer más</button></p>
+							<br/>
+						<ul class="lista">
+							<li>Nombre y objetivo del proyecto. </li>
+							<li>Cronograma preliminar de actividades. </li>
+							<li>Descripción detallada de las actividades. </li>
+							<li>Lugar donde se realizará el proyecto. </li>
+							<li>Información de la empresa o institución donde se desarrollara el trabajo.</li>
+						</ul>
+					</div>
+						<button id="lm2" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#acordeon2">Ver más</button>
   					</div>			
   							
   	</article>	
-  	<article>
-  		<img id="imgMini" class= "img-rounded" src="img/residencias1.png">
+  	<article id="art3">
+  		
   					<div class ="caption">
   						<h3>Asignación y Acreditación de las residencias profesionales</h3>
-  							<p>
-							La oportunidad de asignación de proyecto de residencia será única para cada estudiante y la participación en un mismo proyecto podrá ser individual, grupal o multidisciplinaria, dependiendo de las características del propio proyecto. <br>
-							La participación simultanea de varios residentes en un mismo proyecto se justificara únicamente cuando se asegure que las actividades de cada residente se desarrollen entre los limites de 4 a 6 meses de duración y 640 horas acumuladas.  <br>
+  						<div class="textoPro justificar">
+							La oportunidad de asignación de proyecto de residencia será única para cada estudiante y la participación en un mismo proyecto podrá ser individual, grupal o multidisciplinaria, dependiendo de las características del propio proyecto.
+						</div>
+  						<div id="acordeon3" class="collapse textoPro justificar">
+  							La participación simultanea de varios residentes en un mismo proyecto se justificara únicamente cuando se asegure que las actividades de cada residente se desarrollen entre los limites de 4 a 6 meses de duración y 640 horas acumuladas.  <br>
 							A solicitud del candidato a residente, el departamento de servicios escolares, a través de la oficina de control escolar, le extenderá una constancia de su situación académica, en la que se defina si ha aprobado al menos el 75% de los créditos de su plan de estudios y si es alumno regular.
 							Una vez aprobado el proyecto de residencia profesional el alumno deberá sustentar entrevistas con asesores internos y externos para determinar los horarios definitivos de actividades.
 							El jefe de la división de estudios profesionales, previo aval de la academia autorizará una segunda asignación de proyecto para el mismo estudiante únicamente cuando por circunstancias especiales tales como: huelgas, quiebras, cierre de empresas, enfermedades, cambios de políticas empresariales, etc., haya tenido como consecuencias el truncamiento del proyecto.
-  							<p><button class="btn btn-primary"role="button">Leer más</button>
+  						</div>
+  						<button id="lm3" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#acordeon3">Ver más</button>
   					</div>			
-  							</p>
+  							
   	</article>	
 </section>
 </div>
