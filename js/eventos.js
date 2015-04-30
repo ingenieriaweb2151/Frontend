@@ -51,7 +51,7 @@ var inicio = function()
 		if (tipoUsuario == 1){
 			document.getElementById("tusuario").innerHTML = "Maestro: "
 			$("#btnRegistrar").show("slow");
-
+			$("#proyectosbox").show("slow");
 
 			//Cambio de nombre de botones
 			document.getElementById("btnEntregas").innerHTML = "Revisiones"
@@ -92,6 +92,11 @@ var inicio = function()
 		$("#entregas").hide();
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
+<<<<<<< HEAD
+=======
+		$("#entregas").hide("slow");
+
+>>>>>>> origin/test
 
 
 	}
@@ -104,8 +109,12 @@ var inicio = function()
 		$("#banco").show();
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
+<<<<<<< HEAD
 
 
+=======
+		$("#entregas").hide("slow");
+>>>>>>> origin/test
 	}
 
 
@@ -117,8 +126,12 @@ var inicio = function()
 		$("#entregas").hide();
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
+<<<<<<< HEAD
 
 
+=======
+		$("#entregas").hide("slow");
+>>>>>>> origin/test
 	}
 
 	  var traeEntregas = function ()
@@ -129,8 +142,11 @@ var inicio = function()
 		$("#banco").hide();
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/test
 	  }
 
 

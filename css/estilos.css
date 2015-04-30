@@ -47,9 +47,19 @@ img
 #btnEntregas
 {
   display: none;
+<<<<<<< HEAD
 }
 
 #entregas{
+=======
+} 
+
+#entregas{
+   display: none;
+}
+
+#proyectosbox{
+>>>>>>> origin/test
   display: none;
 }
 
@@ -119,6 +129,7 @@ img
   margin-left: 20px;
   width: 642px;
   height: 429px;
+<<<<<<< HEAD
 }
 #rp
 {
@@ -129,6 +140,18 @@ img
   width: 250px;
   height: 200px;
 }
+=======
+}
+#rp
+{
+	font-weight: bold;
+}
+#imgMini
+{
+  width: 250px;
+  height: 200px;
+}
+>>>>>>> origin/test
 #seccionInfo article
 {
   margin: auto;
