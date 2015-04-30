@@ -105,9 +105,13 @@ img
   text-align: left;
 }
 #btnRegistrar{
-  /*display: none;*/
-  text-align: right;
+  display: none;
 }
+
+#btnCargarProy{
+  display: none;
+}
+
 #informacion{
   text-align: center;
 }
@@ -147,7 +151,22 @@ img
   width: 33%;
   padding:20px 20px 20px 20px; 
   position: relative;
+}
 
+#ttipo{
+  display: none;
+}
+
+#usuario{
+  display: none;
+}
+
+#proyectoasign{
+  display: none;
+}
+
+#pa{
+  display: none;
 }
 
 .page-header{

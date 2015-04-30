@@ -25,13 +25,30 @@ var inicio = function(){
 						$("#tablaproy").html(response.renglones);
 						$("#tablaproy").show();
 
-						alert("Bienvenido: "+response.nombre);
+						// alert("Bienvenido: "+response.nombre);
 						
 						anoalumno();
 
 						$("#bienvenido").show("slow");
-						document.getElementById("ttipo").innerHTML = response.nombre;
+
+						$("#ttipo").show();
+						$("#usuario").show();
+						$("#proyectoasign").show();
+						$("#pa").show();
+						var options = document.getElementById("ddlTipoUsuario").getElementsByTagName("option");
+    					var optionHTML = options[document.getElementById("ddlTipoUsuario").selectedIndex].innerHTML;
+						document.getElementById("ttipo").innerHTML = optionHTML+":";
+
+						if(optionHTML == "Alumno"){
+							$("#btnCargarProy").show();
+						}
+						if(optionHTML == "Maestro"){
+							$("#btnRegistrar").show();
+						}
+
 						document.getElementById("usuario").innerHTML = response.nombre;
+						document.getElementById("pa").innerHTML = response.nombre_proyecto;
+						
 					}
 					else
 						alert("Nombre de usuario y/o contraseña incorrectos");
@@ -122,6 +139,7 @@ var inicio = function(){
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
 		$("#entregas").hide("slow");
+
 	}
 
 	var traeDocumentacion = function(){
