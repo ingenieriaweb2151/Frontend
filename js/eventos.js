@@ -18,9 +18,8 @@ var inicio = function(){
 						$("#panelEntrada").hide("slow");
 						$("#nav1").show("slow");
 						$("#btnEntregas").show("slow");
-						$("#informacion").show("slow");
+						$("#informacion").show();
 						$("#btnIngresar").hide("slow");
-
 
 						$("#tablaproy").html(response.renglones);
 						$("#tablaproy").show();
@@ -33,22 +32,27 @@ var inicio = function(){
 
 						$("#ttipo").show();
 						$("#usuario").show();
-						$("#proyectoasign").show();
-						$("#pa").show();
+						
 						var options = document.getElementById("ddlTipoUsuario").getElementsByTagName("option");
     					var optionHTML = options[document.getElementById("ddlTipoUsuario").selectedIndex].innerHTML;
 						document.getElementById("ttipo").innerHTML = optionHTML+":";
 
-						if(optionHTML == "Alumno"){
+						document.getElementById("usuario").innerHTML = response.nombre;
+
+						document.getElementById("pa").innerHTML = response.pnom;
+						if (document.getElementById("pa").innerHTML == ""){
+							document.getElementById("pa").innerHTML = "No asignado"
 							$("#btnCargarProy").show();
-						}
-						if(optionHTML == "Maestro"){
-							$("#btnRegistrar").show();
+							$("#btnSolicitaProy").show();
 						}
 
-						document.getElementById("usuario").innerHTML = response.nombre;
-						document.getElementById("pa").innerHTML = response.nombre_proyecto;
-						
+						if(optionHTML == "Alumno"){
+							$("#proyectoasign").show();
+							$("#pa").show();
+						}
+						if(optionHTML == "División de estudios profesionales"){
+							$("#btnRegistrar").show();
+						}
 					}
 					else
 						alert("Nombre de usuario y/o contraseña incorrectos");
@@ -66,30 +70,30 @@ var inicio = function(){
 		
 	var llenarTablaProy = function(cargado){
 
-		//$u = GetSQLValueString($_POST["aluctr"],"text");
-		//$c = GetSQLValueString(md5($_POST["alupas"]),"text");
+		// //$u = GetSQLValueString($_POST["aluctr"],"text");
+		// //$c = GetSQLValueString(md5($_POST["alupas"]),"text");
 
-		var c = cargado;
-		var parametros = "opc=llenarTablaProy"+"&cargado="+c+"&id="+Math.random();
-		$.ajax({
-				cache:false,
-				url: "data/funciones.php",
-				type: "POST",
-				dataType: "json",
-				data: parametros,
-				success: function(response){
-					if(response.respuesta == true) 
-					{
-						alert("Tabla proyecto");
-						$("#tablaproy").html(response.renglones);
-						$("#tablaproy").show();
-					}
-					else
-						alert("No hay proyectos");
+		// var c = cargado;
+		// var parametros = "opc=llenarTablaProy"+"&cargado="+c+"&id="+Math.random();
+		// $.ajax({
+		// 		cache:false,
+		// 		url: "data/funciones.php",
+		// 		type: "POST",
+		// 		dataType: "json",
+		// 		data: parametros,
+		// 		success: function(response){
+		// 			if(response.respuesta == true) 
+		// 			{
+		// 				alert("Tabla proyecto");
+		// 				$("#tablaproy").html(response.renglones);
+		// 				$("#tablaproy").show();
+		// 			}
+		// 			else
+		// 				alert("No hay proyectos");
 
-						$("#tablaproy").html(response.renglones);
-				}
-			});
+		// 				$("#tablaproy").html(response.renglones);
+		// 		}
+		// 	});
 	}
 
 	var validaAluProy = function(response){
@@ -132,6 +136,23 @@ var inicio = function(){
 	}
 
 	var traeBanco = function (){
+		if(document.getElementById("usuario").innerHTML == ""){
+			var parametros = "opc=llenarTablaProy"+"&id="+Math.random();
+			$.ajax({
+				cache:false,
+				url: "data/funciones.php",
+				type: "POST",
+				dataType: "json",
+				data: parametros,
+				success: function(response){
+					if(response.respuesta == true){
+						$("#tablaproy").html(response.renglones);
+						$("#tablaproy").show();
+					}
+				}
+			});
+		}
+
 		$("#informacion").hide();
 		$("#documentacion").hide();
 		$("#entregas").hide();
@@ -187,7 +208,7 @@ var inicio = function(){
 	var Ingresar = function(){
 		$("#panelEntrada").show("slow");
 		// $("#nav1").hide("slow");
-		$("#informacion").hide("slow");
+		$("#informacion").hide();
 		$("#entregas").hide();
 		$("#banco").hide();
 		$("#seccionlinks").show();

@@ -222,6 +222,7 @@ function ValidaAluProy(){
 		$renglones.="<th>Cupos</th>";
 		$renglones.="<th>Cargar</th>";
 		$renglones.="</tr>";
+
 		while($registro = mysql_fetch_array($resultado2)){
 			$renglones.="<tr>";
 			$renglones.="<td>".$registro["nombreproy"]."</td>";
@@ -260,8 +261,7 @@ function LlenarTablaProy(){
 	//Validamos los datos.
 	$res = false; //Saber el correcto
 	$renglones = "";
-	if($pnom!=NULL){
-		$renglones.="<tr>";
+		$renglones.="<tr class='warning'>";
 		$renglones.="<th>Nombre Proyecto</th>";
 		$renglones.="<th>Objetivo</th>";
 		$renglones.="<th>Justificacion</th>";
@@ -281,36 +281,7 @@ function LlenarTablaProy(){
 			$renglones.="<td>".$registro["telef"]."</td>";
 			$renglones.="<td>".$registro["numresi"]."</td>";
 			$renglones.="</tr>";
-
 		}
-	}
-	else{
-		$renglones.="<tr>";
-		$renglones.="<th>Nombre Proyecto</th>";
-		$renglones.="<th>Objetivo</th>";
-		$renglones.="<th>Justificacion</th>";
-		$renglones.="<th>Empresa</th>";
-		$renglones.="<th>Encargado</th>";
-		$renglones.="<th>Telefono</th>";
-		$renglones.="<th>Cupos</th>";
-		$renglones.="<th>Cargar</th>";
-		$renglones.="</tr>";
-		while($registro = mysql_fetch_array($resultado)){
-			$res = true;
-			$renglones.="<tr>";
-			$renglones.="<td>".$registro["nombreproy"]."</td>";
-			$renglones.="<td>".$registro["objetiv"]."</td>";
-			$renglones.="<td>".$registro["justifi"]."</td>";
-			$renglones.="<td>".$registro["nombreemp"]."</td>";
-			$renglones.="<td>".$registro["nomresp"]."</td>";
-			$renglones.="<td>".$registro["telef"]."</td>";
-			$renglones.="<td>".$registro["numresi"]."</td>";
-			$renglones.="<td>";
-			$renglones.="<input type='checkbox' name=".$registro["nombreproy"].">";
-			$renglones.="</td>";
-			$renglones.="</tr>";
-		}
-	}
 	$salidaJSON = array('respuesta'	=> $res,
 						'renglones'	=> $renglones);
 	print json_encode($salidaJSON);

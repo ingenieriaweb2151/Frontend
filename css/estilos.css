@@ -112,6 +112,10 @@ img
   display: none;
 }
 
+#btnSolicitaProy{
+  display: none;
+}
+
 #informacion{
   text-align: center;
 }
