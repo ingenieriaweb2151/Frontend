@@ -49,9 +49,16 @@ var inicio = function(){
 						if(optionHTML == "Alumno"){
 							$("#proyectoasign").show();
 							$("#pa").show();
+							$("#btnGuardaProyecto").hide();
 						}
 						if(optionHTML == "División de estudios profesionales"){
+
 							$("#btnRegistrar").show();
+							$("#btnSolicitaProy").hide();
+							$("#btnGuardaProyecto").show();
+
+							$("#btnSolicita").hide();
+							$("#btnCargarProy").hide();
 						}
 
 						if(optionHTML != "Alumno"){
@@ -292,6 +299,13 @@ var inicio = function(){
 		$("#solicitaProyecto").show();
 	}
 
+	var Solicitaste = function(){
+		alert("Tu proyecto esta en proceso de aceptacion, podras cargarlo una vez lo validemos");
+		$("#solicitaProyecto").hide();
+		$("#banco").hide();
+		$("#informacion").show();
+	}
+
 	var EliminaUsuario = function(){
 		var u = $("#txtNombreUsuario").val();
 		var parametros = "opc=EliminaUsuario"+"&usuario="+u+"&id="+Math.random();
@@ -309,7 +323,6 @@ var inicio = function(){
 				}
 			},
 			error: function(xhr,ajaxOption,x){
-
 			}
 		});
 	}
@@ -327,8 +340,9 @@ var inicio = function(){
 	$("#btnDivDocumentacion").on("click",traeDocumentacion);
 	$("#btnEliminaUsuario").on("click",EliminaUsuario);
 	$("#btnIngresar").on("click",Ingresar);
-	$("#btnRegistrar").on("click",DivUsuarios);
+	$("#btnRegistrar").on("click",solicitaProy);
 	$("#btnSolicita").on("click",solicitaProy);
+	$("#btnSolicitaProy").on("click",Solicitaste);
 }
 
 $(document).on("ready",inicio);

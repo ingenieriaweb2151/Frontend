@@ -34,10 +34,19 @@ img
 
 #solicitaProyecto{
   display: none;
-  margin: 0 auto;
+/*  margin: 0 auto;*/
+}
+#solicitaProyecto article{
+  display: none;
+  display: inline-block;
+  margin-left: 100px;
   width: 350px;
 }
 
+#solicitaProyecto button{
+  width: 350px;
+  margin-left: 300px;
+}
 
 #altaProyectos
 {
@@ -145,6 +154,7 @@ img
 
 #rp
 {
+  margin-top: -10px;
 	font-weight: bold;
 }
 
