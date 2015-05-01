@@ -32,12 +32,12 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   return $theValue;
 }
 
-function conectaBD($tipoUsuario)
+function conectaBD()
 {
 	//Servidor, Usuario, Contraseña
-	$conexion =  mysql_connect("localhost",$tipoUsuario,"");
+	$conexion =  mysql_connect("localhost","root","");
 	//Seleccionamos la BD
-	mysql_select_db("residenciasitc");
+	mysql_select_db("residencias");
 	return $conexion;
 }	
 
@@ -155,12 +155,13 @@ function EliminaUsuario()
 
 function ValidaAluProy(){
 	$u = GetSQLValueString($_POST["aluctr"],"text");
-	$c = GetSQLValueString($_POST["alupas"],"text");
+	$c = GetSQLValueString(md5($_POST["alupas"]),"text");
 	$tipousuario = GetSQLValueString($_POST["tu"],"text");
 
 	//Conectar a la BD
-	$conexion = conectaBD($tipousuario);
+	$conexion = conectaBD();
 	//Preparar la consulta SQL
+
 	$consulta  = sprintf("select P.nombre as nombreproy,P.numresi,P.objetiv,P.justifi,P.nomresp,E.nombre as nombreemp,E.telef,DA.alunom,DA.aluapp from dalumn DA left join asignproyectos AP ON AP.aluctr=DA.aluctr left join proyectos P ON AP.cveproy=P.cveproy left join empresas E ON AP.cveempr=E.cveempr where DA.aluctr=%s and DA.alupas=%s",$u,$c);
 	//Ejecutamos la consulta.
 	$resultado = mysql_query($consulta);

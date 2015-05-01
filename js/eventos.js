@@ -29,6 +29,8 @@ var inicio = function()
 							$("#btnEntregas").show("slow");
 							$("#informacion").show("slow");
 							$("#btnIngresar").hide("slow");
+							$("#altaProyectos").hide("slow");
+		
 
 							alert("Bienvenido: "+response.nombre);
 							if(response.pnom != null){
@@ -131,8 +133,6 @@ var inicio = function()
 		$("#altaProyectos").hide("slow");
 		$("#entregas").hide("slow");
 
-
-
 	}
 
 	var traeBanco = function ()
@@ -205,7 +205,7 @@ var inicio = function()
 		$("#banco").hide();
 		$("#seccionlinks").show();
 		$("#documentacion").hide();
-
+		$("#altaProyectos").hide("slow");
 		$("#docsAmbos").hide("slow");
 		$("#docsGenerales").show("slow");
 

@@ -3,89 +3,82 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Instituto Tecnológico de Culiacán - Residencias Profesionales</title>
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="css/bootstrap/js/bootstrap.js"></script>
 	<link rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" href="css/estilos.css">
-	<script src="js/jquery-2.1.1.js"></script>
-
-	<script src="css/bootstrap/js/bootstrap.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,800,400' rel='stylesheet' type='text/css'>
+	
 	<script src="js/eventos.js"></script>
 </head>
 <body>
 	<header>
-		<div class="page-header">
-		  <h1>Sistema de Residencias Profesionales<br> <small>Instituto Tecnológico de Culiacán
-		  </small></h1>
-		  	<h id="tusuario" class="usuarios"></h> <h id="usuario" class="usuarios"></h>
-		  		<img src="img/logoitc.png" id="logotec">
-		</div>
+	<div class="pageheader">
+
+		<span class="usu"><h id="tusuario" class="usuarios"></h> <h id="usuario" class="usuarios"></h></span>
+		<img id="logoitc" src="img/logoitc.png">
+		<h1> SISTEMA DE RESIDENCIAS </h1>
+	</div>
 		<nav id="nav1">
 			<ul>
 				<li>
-					<button class="btn btn-default" id="btnInicio">
-						<span class="glyphicon glyphicon-home"></span>
-						Inicio 
+					<button  id="btnInicio">
+					  INICIO
 					</button>
 				</li>
+					|		
 				<li>
-					<button class="btn btn-info" id="btnDivDocumentacion">
-						<span class="glyphicon glyphicon-cloud-download"></span>
-						 Documentación
+					<button id="btnDivDocumentacion">
+					 		DOCUMENTOS	
 					</button>
 				</li>
+						|
 				<li>
-					<button class="btn btn-warning" id="btnDivBanco">
-						<span class="glyphicon glyphicon-folder-open"></span>
-						Banco de Proyectos
+					<button id="btnDivBanco" >
+					BANCO 
 					</button>
 				</li>
-
+						|
 				<li>
-					<button class="btn btn-danger" id="btnEntregas">
-						<span class="glyphicon glyphicon-inbox"></span>
-						Entregas						
+					<button id="btnEntregas">
+					ENTREGAS 						
 					</button>
 				</li>
-
+						
 				<li>
-					<button class="btn btn-primary" id="btnIngresar">
-						<span class="glyphicon glyphicon-user"></span>
-						Ingresar
+					<button id="btnIngresar">
+					INGRESAR
 					</button>
 				</li>
 			</ul>
 		</nav>
 	</header>
-    
-	<div id="informacion" class="jumbotron">
-		<h2 id="rp">RESIDENCIAS PROFESIONALES</h2>
-  <h4> Fecha de inicio para solicitar residencias profesionales:<small id="fecha"> XX/XX/XXXX </small> </h4>
-  	<br><br>
-  	<img id="imgInicio" class= "img-rounded" src="img/residencias.png"> <br><br>
-<section class="seccionInfo">
-<article><img id="imgMini" class= "img-rounded" src="img/residencias3.png"></article>
-<article><img id="imgMini" class= "img-rounded" src="img/requisitos.png"></article>
-<article><img id="imgMini" class= "img-rounded" src="img/residencias1.png"/></article>
-</section>
-<section class="seccionInfo">
+
+
+	<div id="informacion">
+	<img id="equipo" src="img/equipo.jpg"> <br><br>
+	
+	<section id="seccionInfo">
 		<article id="art1">	  				
   					<div class="caption">
-  						<h3>¿Qué son las Residencias Profesionales?</h3>
-  							<div class="textoPro justificar"> 
+  						<h3>Residencias Profesionales</h3><br><br>
+  							<div class="textoPro"> 
   								Se concibe la residencia profesional como una estrategia educativa, con carácter curricular, que permite al estudiante, aun estando en proceso de formación,
   							</div>
   							<div id="acordeon1" class="collapse textoPro justificar">
   								incorporarse profesionalmente a los sectores productivos de bienes y servicios, a través del desarrollo de un proyecto, asesorado por instancias académicas e instancias externas.
   								El desarrollo de la residencia profesional puede representar una forma de transitar entre la teoría y la práctica.
   							</div>
-							<button id="lm1" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#acordeon1">Ver más</button>
+							<button id="lm1" type="button" class="btn btn-default" data-toggle="collapse" data-target="#acordeon1">Ver más</button>
   					</div>	 													 
   		</article>
   	<article id="art2">
   				
   					<div class="caption ">
-  						<h3 style="height:78px;">¿Cuales son los Requisitos?</h3>
+  						<h3 style="height:78px;">Requisitos</h3> <br>
 						<div class="textoPro justificar"> 
-							El alumno que ha cubierto el 75% del total de sus créditos puede solicitar la realización de sus Residencias Profesionales mediante los siguientes mecanismos: <br/><br/> </div>
+							El alumno que ha cubierto el 75% del total de sus créditos puede solicitar la realización de sus Residencias Profesionales mediante los siguientes mecanismos: <br/><br/>
+						</div>
 						<div id="acordeon2" class="collapse textoPro justificar">
 							A través de su selección en el banco de proyectos de la coordinación respectiva.
 							Proponiendo su propio tema directamente a la División de
@@ -100,8 +93,8 @@
 							<li>Lugar donde se realizará el proyecto. </li>
 							<li>Información de la empresa o institución donde se desarrollara el trabajo.</li>
 						</ul>
-					</div>
-						<button id="lm2" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#acordeon2">Ver más</button>
+						</div>
+						<button id="lm2" type="button" class="btn btn-default" data-toggle="collapse" data-target="#acordeon2">Ver más</button>
   					</div>			
   							
   	</article>	
@@ -118,12 +111,13 @@
 							Una vez aprobado el proyecto de residencia profesional el alumno deberá sustentar entrevistas con asesores internos y externos para determinar los horarios definitivos de actividades.
 							El jefe de la división de estudios profesionales, previo aval de la academia autorizará una segunda asignación de proyecto para el mismo estudiante únicamente cuando por circunstancias especiales tales como: huelgas, quiebras, cierre de empresas, enfermedades, cambios de políticas empresariales, etc., haya tenido como consecuencias el truncamiento del proyecto.
   						</div>
-  						<button id="lm3" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#acordeon3">Ver más</button>
+  						<button id="lm3" type="button" class="btn btn-default" data-toggle="collapse" data-target="#acordeon3">Ver más</button>
   					</div>			
   							
   	</article>	
-</section>
+</section>	
 </div>
+
 
 	<div id="banco">
 		<!-- <div class="container"> -->
@@ -131,9 +125,17 @@
 			<table id="tablaproy" class="table table-striped table-hover warning">
 			</table>
 			<button class="btn btn-success" id="btnRegistrar">
-						<span class="glyphicon glyphicon-home"></span>
-						Registrar Proyecto
-					</button>
+			<span class="glyphicon glyphicon-home"></span>
+					Registrar Proyecto				</button>
+			<button class="btn btn-info" id="btnSolicita">
+				<span class="glyphicon glyphicon-edit"></span>
+					Solicita tu proyecto externo
+			</button>
+			<button class="btn btn-success" id="btnCargarProy">
+				<span class="glyphicon glyphicon-check"></span>
+					Cargar Proyecto
+			</button>
+
 	</div>
 
 	<div id="altaProyectos">
@@ -150,11 +152,11 @@
 			<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true">	
 			</span>
 		</button>
-		<button id="btnEliminaProyecto" class="btn btn-danger btn-lg btn-block">
+		<!--<button id="btnEliminaProyecto" class="btn btn-danger btn-lg btn-block">
 			Eliminar 
 			<span class="glyphicon glyphicon-floppy-disk" aria-hidden="true">	
 			</span>
-		</button>
+		</button>-->
 	</div>
 
 	<div class="panel panel-primary" id="panelEntrada">
@@ -195,7 +197,7 @@
 		<h2></h2>
 	</div>
 
-	<div id="documentacion" class="jumbotron">
+	<div id="documentacion" >
 
 	<section id="seccionlinks">
 		<article id="AmbosPlanes"> 
@@ -273,9 +275,10 @@
 	</div>
 
 	<footer>
-		<small>
+		<span class="fecha">	<h4> Fecha de inicio para solicitar residencias profesionales:<small id="fecha"> XX/XX/XXXX </small></h4></span>
+		<!--<small>
 			DR &copy; Ingeniería Web 2015.
-		</small>
+		</small>-->
 	</footer>
 </body>
 </html>
