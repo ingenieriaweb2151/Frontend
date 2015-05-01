@@ -32,6 +32,13 @@ img
   border-radius: 500px;
 }
 
+#solicitaProyecto{
+  display: none;
+  margin: 0 auto;
+  width: 350px;
+}
+
+
 #altaProyectos
 {
   display: none; /*Ocultamos el DIV*/
@@ -112,7 +119,7 @@ img
   display: none;
 }
 
-#btnSolicitaProy{
+#btnSolicita{
   display: none;
 }
 

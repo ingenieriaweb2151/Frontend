@@ -43,7 +43,7 @@ var inicio = function(){
 						if (document.getElementById("pa").innerHTML == ""){
 							document.getElementById("pa").innerHTML = "No asignado"
 							$("#btnCargarProy").show();
-							$("#btnSolicitaProy").show();
+							$("#btnSolicita").show();
 						}
 
 						if(optionHTML == "Alumno"){
@@ -53,6 +53,11 @@ var inicio = function(){
 						if(optionHTML == "División de estudios profesionales"){
 							$("#btnRegistrar").show();
 						}
+
+						if(optionHTML != "Alumno"){
+							$("btnSolicita").hide();
+						}
+
 					}
 					else
 						alert("Nombre de usuario y/o contraseña incorrectos");
@@ -283,6 +288,10 @@ var inicio = function(){
 		}		
 	}
 
+	var solicitaProy =function(){
+		$("#solicitaProyecto").show();
+	}
+
 	var EliminaUsuario = function(){
 		var u = $("#txtNombreUsuario").val();
 		var parametros = "opc=EliminaUsuario"+"&usuario="+u+"&id="+Math.random();
@@ -319,6 +328,7 @@ var inicio = function(){
 	$("#btnEliminaUsuario").on("click",EliminaUsuario);
 	$("#btnIngresar").on("click",Ingresar);
 	$("#btnRegistrar").on("click",DivUsuarios);
+	$("#btnSolicita").on("click",solicitaProy);
 }
 
 $(document).on("ready",inicio);
