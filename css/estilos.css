@@ -66,6 +66,16 @@ img
   display: none;
 } 
 
+#btnSolicitud
+{
+  display: none;
+} 
+
+#btnSalir
+{
+  display: none;
+} 
+
 #entregas{
    display: none;
 }

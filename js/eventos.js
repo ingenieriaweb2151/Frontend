@@ -1,3 +1,4 @@
+
 var inicio = function(){
 
 	var validaUsuario = function(){
@@ -17,9 +18,11 @@ var inicio = function(){
 					{
 						$("#panelEntrada").hide("slow");
 						$("#nav1").show("slow");
+						$("#btnSalir").show("slow");
 						$("#btnEntregas").show("slow");
 						$("#informacion").show();
 						$("#btnIngresar").hide("slow");
+						$("#btnSalir").show("slow");
 
 						$("#tablaproy").html(response.renglones);
 						$("#tablaproy").show();
@@ -296,6 +299,7 @@ var inicio = function(){
 	}
 
 	var solicitaProy =function(){
+
 		$("#solicitaProyecto").show();
 	}
 
