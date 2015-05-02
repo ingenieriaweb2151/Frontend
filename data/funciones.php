@@ -37,50 +37,48 @@ function conectaBD()
 	//Servidor, Usuario, Contraseña
 	$conexion =  mysql_connect("localhost","root","");
 	//Seleccionamos la BD
-	mysql_select_db("pw15");
+	mysql_select_db("residencias");
 	return $conexion;
 }	
 
 
 function ValidaEntrada()
 {
-	$u = GetSQLValueString($_POST["usuario"],"text");
-	$c = GetSQLValueString(md5($_POST["clave"]),"text");
+	$u = GetSQLValueString($_POST["aluctr"],"text");
+	$c = GetSQLValueString(md5($_POST["alupas"]),"text");
+	$tipousuario = GetSQLValueString($_POST["tu"],"text");
 	//Conectar a la BD
-	$conexion = conectaBD();
+	$conexion = conectaBD($tipousuario);
 	//Preparar la consulta SQL
-	$consulta  = sprintf("select * from usuarios where usuario=%s and clave=%s",$u,$c);
+	$consulta  = sprintf("select alunom, from dalumn where aluctr=%s and alupas=%s",$u,$c);
 	//Ejecutamos la consulta.
 	$resultado = mysql_query($consulta);
 	//Validamos los datos.
 	$res = false; //Saber el correcto
-	$nombre = ""; //Nombre completo
-	$tipousuario = 0;
+	$nomalum = ""; //Nombre completo
 	if($registro = mysql_fetch_array($resultado))
 	{
 		$res = true;
-		$nombre = $registro["nombre"]." ".$registro["apellido"];
-		$tipousuario = $registro["tipousuario"];
+		$nombre = $registro["nomalum"]." ".$registro["aluapp"];
 	}
 	$salidaJSON = array('respuesta' => $res,
-						'nombre'    => $nombre,
-						'tipousuario' => $tipousuario);
+						'nombre'    => $nombre);
 	//Codificamos a JSON el array asociativo.
 	print json_encode($salidaJSON);
 }
 
-function consultaUsuario($usuario)
-{
-	$respuesta = false;
-	$conexion = conectaBD();
-	$consulta = sprintf("select usuario from usuarios where usuario=%s",$usuario);
-	$resconsulta = mysql_query($consulta); //ejecutamos la consulta.
-	if($registro = mysql_fetch_array($resconsulta))
-	{
-		$respuesta = true;
-	}
-	return $respuesta;
-}
+// function consultaUsuario($usuario)
+// {
+// 	$respuesta = false;
+// 	$conexion = conectaBD();
+// 	$consulta = sprintf("select usuario from usuarios where usuario=%s",$usuario);
+// 	$resconsulta = mysql_query($consulta); //ejecutamos la consulta.
+// 	if($registro = mysql_fetch_array($resconsulta))
+// 	{
+// 		$respuesta = true;
+// 	}
+// 	return $respuesta;
+// }
 
 function GuardaProyecto()
 {
@@ -155,9 +153,124 @@ function EliminaUsuario()
 	print json_encode($salidaJSON);
 }
 
+function ValidaAluProy(){
+	$u = GetSQLValueString($_POST["aluctr"],"text");
+	$c = GetSQLValueString(md5($_POST["alupas"]),"text");
+	$tipousuario = GetSQLValueString($_POST["tu"],"text");
+
+	//Conectar a la BD
+	$conexion = conectaBD();
+	//Preparar la consulta SQL
+
+	$consulta  = sprintf("select P.nombre as nombreproy,P.numresi,P.objetiv,P.justifi,P.nomresp,E.nombre as nombreemp,E.telef,DA.alunom,DA.aluapp from dalumn DA left join asignproyectos AP ON AP.aluctr=DA.aluctr left join proyectos P ON AP.cveproy=P.cveproy left join empresas E ON AP.cveempr=E.cveempr where DA.aluctr=%s and DA.alupas=%s",$u,$c);
+	//Ejecutamos la consulta.
+	$resultado = mysql_query($consulta);
+	//Validamos los datos.
+	$res = false; //Saber el correcto
+	$nombre = ""; //Nombre completo
+	$pnom = "";
+	$pnumr = 0;
+	$pobj = "";
+	$pjust = "";
+	$pnomresp = "";
+	$enom = "";
+	$etel = "";
+	if($registro = mysql_fetch_array($resultado))
+	{
+		$res = true;
+		$nombre = $registro["alunom"]." ".$registro["aluapp"];
+		$pnom = $registro["nombreproy"];
+		$pnumr = $registro["numresi"];
+		$pobj = $registro["objetiv"];
+		$pjust = $registro["justifi"];
+		$pnomresp = $registro["nomresp"];
+		$enom = $registro["nombreemp"];
+		$etel = $registro["telef"];
+	}
+	$salidaJSON = array('respuesta' => $res,
+						'nombre'    => $nombre,
+						'pnom'		=> $pnom,
+						'pnumr'		=> $pnumr,
+						'pobj'		=> $pobj,
+						'pjust'		=> $pjust,
+						'pnomresp'	=> $pnomresp,
+						'enom'		=> $enom,
+						'etel'		=> $etel); 
+	//Codificamos a JSON el array asociativo.
+	print json_encode($salidaJSON);
+}
+
+function LlenarTablaProy(){
+	$conexion = conectaBD();
+	//Preparar la consulta SQL
+	$consulta  = sprintf("select P.nombre as nombreproy,P.numresi,P.objetiv,P.justifi,P.nomresp,E.nombre as nombreemp,E.telef from proyectos P inner join empresas E ON P.cveempr=E.cveempr");
+	//Ejecutamos la consulta.
+	$resultado = mysql_query($consulta);
+	//Validamos los datos.
+	$res = false; //Saber el correcto
+	$renglones = "";
+	// if($c=="ya"){
+	// 	$renglones.="<tr>";
+	// 	$renglones.="<th>Nombre Proyecto</th>";
+	// 	$renglones.="<th>Objetivo</th>";
+	// 	$renglones.="<th>Justificacion</th>";
+	// 	$renglones.="<th>Empresa</th>";
+	// 	$renglones.="<th>Encargado</th>";
+	// 	$renglones.="<th>Telefono</th>";
+	// 	$renglones.="<th>Cupos</th>";
+	// 	$renglones.="</tr>";
+	// 	while($registro = mysql_fetch_array($resultado)){
+	// 		$res = true;
+	// 		$renglones.="<tr>";
+	// 		$renglones.="<td>".$registro["nombreproy"]."</td>";
+	// 		$renglones.="<td>".$registro["objetiv"]."</td>";
+	// 		$renglones.="<td>".$registro["justifi"]."</td>";
+	// 		$renglones.="<td>".$registro["nombreemp"]."</td>";
+	// 		$renglones.="<td>".$registro["nomresp"]."</td>";
+	// 		$renglones.="<td>".$registro["telef"]."</td>";
+	// 		$renglones.="<td>".$registro["numresi"]."</td>";
+	// 		$renglones.="</tr>";
+
+	// 	}
+	// }
+	// else{
+		$renglones.="<tr>";
+		$renglones.="<th>Nombre Proyecto</th>";
+		$renglones.="<th>Objetivo</th>";
+		$renglones.="<th>Justificacion</th>";
+		$renglones.="<th>Empresa</th>";
+		$renglones.="<th>Encargado</th>";
+		$renglones.="<th>Telefono</th>";
+		$renglones.="<th>Cupos</th>";
+		$renglones.="<th>Cargar</th>";
+		$renglones.="</tr>";
+		while($registro = mysql_fetch_array($resultado)){
+			$res = true;
+			$renglones.="<tr>";
+			$renglones.="<td>".$registro["nombreproy"]."</td>";
+			$renglones.="<td>".$registro["objetiv"]."</td>";
+			$renglones.="<td>".$registro["justifi"]."</td>";
+			$renglones.="<td>".$registro["nombreemp"]."</td>";
+			$renglones.="<td>".$registro["nomresp"]."</td>";
+			$renglones.="<td>".$registro["telef"]."</td>";
+			$renglones.="<td>".$registro["numresi"]."</td>";
+			$renglones.="<td>";
+			$renglones.="<input type='checkbox' name=".$registro["nombreproy"].">";
+			$renglones.="</td>";
+			$renglones.="</tr>";
+		}
+	//}
+	$salidaJSON = array('respuesta'	=> $res,
+						'renglones'	=> $renglones);
+	print json_encode($salidaJSON);
+}
+
 //Opciones a ejecutar.
 $opcion = $_POST["opc"];
 switch ($opcion) {
+	case 'llenarTablaProy':
+		LlenarTablaProy();
+		break;
 	case 'validaentrada':
 		ValidaEntrada();
 		break;
@@ -169,6 +282,9 @@ switch ($opcion) {
 		break;
 	case 'EliminaUsuario':
 		EliminaUsuario();
+		break;
+	case 'validaAluProy':
+		ValidaAluProy();
 		break;
 	default:
 		# code...

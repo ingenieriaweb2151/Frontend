@@ -5,10 +5,67 @@ var inicio = function()
 	{
 		var u = $("#txtUsuario").val();
 		var c = $("#txtClave").val();
-		var parametros = "opc=validaentrada"+"&usuario="+u+"&clave="+c+"&id="+Math.random();
-		if(u!="" && c!="")
+		var t = $("#ddlTipoUsuario").val();
+		var parametros = "opc=validaAluProy"+"&tu="+t+"&aluctr="+u+"&alupas="+c+"&id="+Math.random();
+		if (t!="alumno" && t!="asesor" && t!="divestpro" && t!="vinculacion")
 		{
-			$.ajax({
+			alert("Tipo de usuario inválido");
+		}
+		else
+		{
+			if(u!="" && c!="")
+			{
+				$.ajax({
+					cache:false,
+					url: "data/funciones.php",
+					type: "POST",
+					dataType: "json",
+					data: parametros,
+					success: function(response){
+						if(response.respuesta == true) 
+						{
+							$("#panelEntrada").hide("slow");
+							$("#nav1").show("slow");
+							$("#btnEntregas").show("slow");
+							$("#informacion").show("slow");
+							$("#btnIngresar").hide("slow");
+							$("#altaProyectos").hide("slow");
+		
+
+							alert("Bienvenido: "+response.nombre);
+							if(response.pnom != null){
+								llenarTablaProy(true);
+							}
+							else llenarTablaProy(false);
+							anoalumno();
+
+							$("#bienvenido").show("slow");
+							
+							document.getElementById("usuario").innerHTML = response.nombre;
+
+							var options = document.getElementById("ddlTipoUsuario").getElementsByTagName("option");
+    						var optionHTML = options[document.getElementById("ddlTipoUsuario").selectedIndex].innerHTML;
+							document.getElementById("tusuario").innerHTML = optionHTML+":";
+						}
+						else
+							alert("Nombre de usuario y/o contraseña incorrectos");
+					}
+				});
+			}
+			else
+				alert("Llene todos campos");
+		}
+		// if(u=="pw" && c=="clave")
+		// {
+		// 	$("#panelEntrada").hide("slow");
+		// 	$("nav").show("slow");
+		// }
+	}
+	
+	var llenarTablaProy = function(cargado){
+		var c = cargado;
+		var parametros = "opc=llenarTablaProy"+"&cargado="+c+"&id="+Math.random();
+		$.ajax({
 				cache:false,
 				url: "data/funciones.php",
 				type: "POST",
@@ -17,48 +74,30 @@ var inicio = function()
 				success: function(response){
 					if(response.respuesta == true) 
 					{
-						$("#panelEntrada").hide("slow");
-						$("#nav1").show("slow");
-						$("#btnEntregas").show("slow");
-						$("#informacion").show("slow");
-						$("#btnIngresar").hide("slow");
-
-						alert("Bienvenido: "+response.nombre);
-
-						validaTipoUsuario(response);
-						anoalumno();
-
-						$("#bienvenido").show("slow");
-						document.getElementById("usuario").innerHTML = response.nombre;
+						alert("Tabla proyecto");
+						$("#tablaproy").html(response.renglones);
+						$("#tablaproy").show();
 					}
 					else
-						alert("Nombre de usuario y/o contraseña incorrectos");
+						alert("No hay proyectos");
+						$("#tablaproy").html(response.renglones);
 				}
 			});
-		}
-		else
-			alert("Llene todos campos");
-		// if(u=="pw" && c=="clave")
-		// {
-		// 	$("#panelEntrada").hide("slow");
-		// 	$("nav").show("slow");
+	}
+
+	var validaAluProy = function(response){
+			
+		// if (nomproy != null){
+		// 	document.getElementById("tusuario").innerHTML = "Maestro: "
+		// 	$("#btnRegistrar").show("slow");s
+		// 	$("#proyectosbox").show("slow");
+
+		// 	//Cambio de nombre de botones
+		// 	document.getElementById("btnEntregas").innerHTML = "Revisiones"
 		// }
-		}
-
-
-	var validaTipoUsuario = function(response){
-		var tipoUsuario = response.tipousuario;
-		if (tipoUsuario == 1){
-			document.getElementById("tusuario").innerHTML = "Maestro: "
-			$("#btnRegistrar").show("slow");
-			$("#proyectosbox").show("slow");
-
-			//Cambio de nombre de botones
-			document.getElementById("btnEntregas").innerHTML = "Revisiones"
-		}
-		else{
-			document.getElementById("tusuario").innerHTML = "Alumno: "
-		}
+		// else{
+		// 	document.getElementById("tusuario").innerHTML = "Alumno: "
+		// }
 	}
 
 	var anoalumno = function (){
@@ -92,12 +131,7 @@ var inicio = function()
 		$("#entregas").hide();
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
-<<<<<<< HEAD
-=======
 		$("#entregas").hide("slow");
-
->>>>>>> origin/test
-
 
 	}
 
@@ -109,12 +143,9 @@ var inicio = function()
 		$("#banco").show();
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
-<<<<<<< HEAD
-
-
-=======
 		$("#entregas").hide("slow");
->>>>>>> origin/test
+		llenarTablaProy(true);
+
 	}
 
 
@@ -126,12 +157,7 @@ var inicio = function()
 		$("#entregas").hide();
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
-<<<<<<< HEAD
-
-
-=======
 		$("#entregas").hide("slow");
->>>>>>> origin/test
 	}
 
 	  var traeEntregas = function ()
@@ -142,11 +168,6 @@ var inicio = function()
 		$("#banco").hide();
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/test
 	  }
 
 
@@ -184,7 +205,7 @@ var inicio = function()
 		$("#banco").hide();
 		$("#seccionlinks").show();
 		$("#documentacion").hide();
-
+		$("#altaProyectos").hide("slow");
 		$("#docsAmbos").hide("slow");
 		$("#docsGenerales").show("slow");
 
@@ -283,6 +304,19 @@ var inicio = function()
 		});
 	}
 
+	/*var calisBtn = function()
+	{
+		$("#art1").hide("slow");
+		$("#art3").hide("slow");
+		document.getElementById("art2").style.width = "800px";
+	}*/
+	var cambiaTexto = function (){
+		if (this.innerHTML == "Ver más")
+			this.innerHTML = "Ver menos";
+		else
+			this.innerHTML = "Ver más";
+	}
+
 	//Configuramos los eventos.
 	$("#btnEntrar").on("click",validaUsuario);
 	$("#btnInicio").on("click",traeInicio);
@@ -300,6 +334,9 @@ var inicio = function()
 
 	$("#btnIngresar").on("click",Ingresar);
 	$("#btnRegistrar").on("click",DivUsuarios);
+	$("#lm1").on("click",cambiaTexto);
+	$("#lm2").on("click",cambiaTexto);
+	$("#lm3").on("click",cambiaTexto);
 
 
 
