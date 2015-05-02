@@ -331,6 +331,14 @@ var inicio = function(){
 		});
 	}
 
+	var cambiaTexto = function (){
+		if (this.innerHTML == "Ver más")
+			this.innerHTML = "Ver menos";
+		else
+			this.innerHTML = "Ver más";
+	}
+
+
 	//Configuramos los eventos.
 	$("#btnEntrar").on("click",validaUsuario);
 	$("#btnInicio").on("click",traeInicio);
@@ -343,10 +351,16 @@ var inicio = function(){
 	$("#txtNombreUsuario").on("keypress",teclaNombreUsuario);
 	$("#btnDivDocumentacion").on("click",traeDocumentacion);
 	$("#btnEliminaUsuario").on("click",EliminaUsuario);
+	
 	$("#btnIngresar").on("click",Ingresar);
 	$("#btnRegistrar").on("click",solicitaProy);
 	$("#btnSolicita").on("click",solicitaProy);
 	$("#btnSolicitaProy").on("click",Solicitaste);
+	$("#lm1").on("click",cambiaTexto);
+	$("#lm2").on("click",cambiaTexto);
+	$("#lm3").on("click",cambiaTexto);
+
+
 }
 
 $(document).on("ready",inicio);
