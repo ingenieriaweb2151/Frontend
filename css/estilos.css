@@ -33,7 +33,9 @@ body
 {
   margin-top: 50px;
   position: relative;
-  left: 200px;  
+  left: 25%;  
+    width: 50%;
+  height: 50%;
 }
 .caption
 {
@@ -134,10 +136,7 @@ header .page-header
   margin-left: 15px;
 }
 */
-img
-{
-  border-radius: 500px;
-}
+
 
 #solicitaProyecto{
   display: none;
