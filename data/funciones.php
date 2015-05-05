@@ -45,7 +45,7 @@ function conectaBD()
 function ValidaEntrada()
 {
 	$u = GetSQLValueString($_POST["aluctr"],"text");
-	$c = GetSQLValueString(md5($_POST["alupas"]),"text");
+	$c = GetSQLValueStringmd5($_POST["alupas"],"text");
 	$tipousuario = GetSQLValueString($_POST["tu"],"text");
 	//Conectar a la BD
 	$conexion = conectaBD($tipousuario);
@@ -155,7 +155,7 @@ function EliminaUsuario()
 
 function ValidaAluProy(){
 	$u = GetSQLValueString($_POST["aluctr"],"text");
-	$c = GetSQLValueString(md5($_POST["alupas"]),"text");
+	$c = GetSQLValueString($_POST["alupas"],"text");
 	//Conectar a la BD
 	$conexion = conectaBD();
 	//Preparar la consulta SQL
