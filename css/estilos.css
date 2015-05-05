@@ -150,13 +150,13 @@ header .page-header
 #solicitaProyecto article{
   display: none;
   display: inline-block;
-  margin-left: 100px;
+  margin-left: 15%;
   width: 350px;
 }
 
 #solicitaProyecto button{
-  width: 350px;
-  margin-left: 300px;
+  width: 750px;
+  margin-left: 20%;
 }
 
 #altaProyectos
@@ -167,10 +167,13 @@ header .page-header
 }
 
 #banco{
+  margin-top: 50px;
   display: none;
   margin-left: auto;
   margin-right: auto; 
 }
+
+
 .usu
 {
   color: orange;
@@ -257,11 +260,16 @@ margin-top: 100px;
 
 #btnCargarProy{
   display: none;
+  width: 600px;
+  margin-left: 25%;
 }
 
 #btnSolicita{
+  margin-left: 80%;
+  margin-top: -60px;
   display: none;
 }
+
 /*
 #informacion{
   text-align: center;
