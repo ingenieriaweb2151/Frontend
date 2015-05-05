@@ -11,7 +11,6 @@ var inicio = function(){
 		var parametros = "opc=validaentrada"+"&tu="+t+"&usuario="+u+"&clave="+c+"&id="+Math.random();
 		//CAMBIE PARAMETROS, PARA HACERLOS GENERICOS Y NO SOLO DE ALUMNOS
 		//CAMBIE LA VARIABLE opc, PARA VALIDAR LA ENTRADA DE CADA UNO DE LOS USUARIOS
-		//var parametros = "opc=validaentrada"+"&usuario="+u+"&clave="+c+"&id="+Math.random();
 		if(u!="" && c!="")
 		{
 			$.ajax({
@@ -94,33 +93,27 @@ var inicio = function(){
 		// 	$("nav").show("slow");
 		// }
 	}
-		
 	var llenarTablaProy = function(cargado){
-
-		// //$u = GetSQLValueString($_POST["aluctr"],"text");
-		// //$c = GetSQLValueString(md5($_POST["alupas"]),"text");
-
-		// var c = cargado;
-		// var parametros = "opc=llenarTablaProy"+"&cargado="+c+"&id="+Math.random();
-		// $.ajax({
-		// 		cache:false,
-		// 		url: "data/funciones.php",
-		// 		type: "POST",
-		// 		dataType: "json",
-		// 		data: parametros,
-		// 		success: function(response){
-		// 			if(response.respuesta == true) 
-		// 			{
-		// 				alert("Tabla proyecto");
-		// 				$("#tablaproy").html(response.renglones);
-		// 				$("#tablaproy").show();
-		// 			}
-		// 			else
-		// 				alert("No hay proyectos");
-
-		// 				$("#tablaproy").html(response.renglones);
-		// 		}
-		// 	});
+		var c = cargado;
+		var parametros = "opc=llenarTablaProy"+"&cargado="+c+"&id="+Math.random();
+		$.ajax({
+				cache:false,
+				url: "data/funs.php",
+				type: "POST",
+				dataType: "json",
+				data: parametros,
+				success: function(response){
+					if(response.respuesta == true) 
+					{
+						//alert("Tabla proyecto");
+						$("#tablaproy").html(response.renglones);
+						$("#tablaproy").show();
+					}
+					else
+						alert("No hay proyectos");
+						$("#tablaproy").html(response.renglones);
+				}
+			});
 	}
 
 	var validaAluProy = function(response){
@@ -166,7 +159,9 @@ var inicio = function(){
 
 	
 	var traeBanco = function (){
-		if(document.getElementById("usuario").innerHTML == ""){
+
+		//estoy me causaba ruido para traer la tabla de banco de proyectos
+		/*if(document.getElementById("usuario").innerHTML == ""){
 			var parametros = "opc=llenarTablaProy"+"&id="+Math.random();
 			$.ajax({
 				cache:false,
@@ -181,7 +176,7 @@ var inicio = function(){
 					}
 				}
 			});
-		}
+		}*/
 
 		$("#informacion").hide();
 		$("#documentacion").hide();
@@ -192,6 +187,7 @@ var inicio = function(){
 		$("#entregas").hide("slow");
 		$("#divSolicitudes").hide();
 
+		llenarTablaProy(true);
 
 	}
 
