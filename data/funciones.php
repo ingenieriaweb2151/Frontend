@@ -296,8 +296,6 @@ function LlenarTablaSolicitud()
 		$renglones.="<tr class='warning'>";
 		$renglones.="<th>No. Control</th>";
 		$renglones.="<th>Alumno </th>";
-		//$renglones.="<th>Apellido Paterno </th>";
-		//$renglones.="<th>Apellido Materno </th>";
 		$renglones.="<th>Proyecto</th>";
 		$renglones.="<th>Empresa</th>";
 		$renglones.="</tr>";
@@ -305,8 +303,6 @@ function LlenarTablaSolicitud()
 			$renglones.="<tr>";
 			$renglones.="<td>".$registro["aluctr"]."</td>";
 			$renglones.="<td>".$registro["alunom"]." ".$registro["apealumn"]." ".$registro["aluapm"]."</td>";
-			//$renglones.="<td>".$registro["apealumn"]."</td>";
-			//$renglones.="<td>".$registro["aluapm"]."</td>";
 			$renglones.="<td>".$registro["nombreproy"]."</td>";
 			$renglones.="<td>".$registro["nombreempr"]."</td>";
 			$renglones.="</tr>";
