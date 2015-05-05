@@ -1,25 +1,11 @@
 body
 {
-  /*border: 1px solid #000088;*/
   border-radius: 5px;
   margin: 0 auto;
- /* max-width: 1024px;
-  min-width: 1024px;
-*/
  max-width: 1349px;
   min-width: 1349px;
 }
 
-/*
-#logotec{
-  margin-top:15px;
-  position: absolute;
-  top: -10px;
-  left: 1000px;
-  width: 120px;
-  height: 120px;
-}
-*/
 #logoitc
 {
   margin-top:15px;
@@ -54,11 +40,11 @@ body
 }
 #lm1
 {
-  margin-top: 80px;
+  margin-top: 118px;
 }
 #lm2
 {
-  margin-top: 70px;
+  margin-top: 90px;
 }
 #lm3
 {
@@ -124,25 +110,6 @@ header .pageheader
   left: 480px; 
 }
 
-
-/*
-header nav ul
-{
-  text-align: center;
-}
-
-header nav ul li
-{
-  display: inline-block;
-}
-
-header .page-header
-{
-  margin-left: 15px;
-}
-*/
-
-
 #solicitaProyecto{
   display: none;
 /*  margin: 0 auto;*/
@@ -181,6 +148,11 @@ header .page-header
   font-weight: 600;
   position: relative;
   left: 500px;
+}
+#btnGuardar
+{
+  position: relative;
+  left: 600px;
 }
 
 #btnEntregas
@@ -226,11 +198,6 @@ header .page-header
   text-align: center;
 }
 
-/*#seccionlinks article{
-  display: inline-block;
-  text-align: top;
-}*/
-
 #docsGenerales{
   display: none;
 }
@@ -270,12 +237,6 @@ margin-top: 100px;
   margin-top: -60px;
   display: none;
 }
-
-/*
-#informacion{
-  text-align: center;
-}
-*/
 #infoarticle{
   text-align: left;
 }
