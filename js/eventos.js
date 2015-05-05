@@ -1,10 +1,22 @@
 
 var inicio = function(){
 
+	var datos = [];
+	//Declaramos las funciones.
+
+	
+	
 	var validaUsuario = function(){
 		var u = $("#txtUsuario").val();
 		var c = $("#txtClave").val();
-		var parametros = "opc=validaAluProy"+"&aluctr="+u+"&alupas="+c+"&id="+Math.random();
+		var t = $("#ddlTipoUsuario").val();
+		var parametros = "opc=validaentrada"+"&tu="+t+"&usuario="+u+"&clave="+c+"&id="+Math.random();
+		if (t!="alumno" && t!="asesor" && t!="divestpro" && t!="vinculacion")
+		{
+			alert("Tipo de usuario inválido");
+		}
+		else
+		{
 		if(u!="" && c!="")
 		{
 			$.ajax({
@@ -26,6 +38,16 @@ var inicio = function(){
 
 						$("#tablaproy").html(response.renglones);
 						$("#tablaproy").show();
+						$("#altaProyectos").hide("slow");
+							datos["ncontrol"] = u;
+
+							alert("Bienvenido: "+response.nombre);
+							if(response.pnom != null){
+								llenarTablaProy(true);
+							}
+							else llenarTablaProy(false);
+							anoalumno();
+
 
 						// alert("Bienvenido: "+response.nombre);
 						
@@ -40,7 +62,7 @@ var inicio = function(){
     					var optionHTML = options[document.getElementById("ddlTipoUsuario").selectedIndex].innerHTML;
 						document.getElementById("ttipo").innerHTML = optionHTML+":";
 
-						document.getElementById("usuario").innerHTML = response.nombre;
+					document.getElementById("usuario").innerHTML = response.nombre;
 
 						document.getElementById("pa").innerHTML = response.pnom;
 						if (document.getElementById("pa").innerHTML == ""){
@@ -53,6 +75,8 @@ var inicio = function(){
 							$("#proyectoasign").show();
 							$("#pa").show();
 							$("#btnGuardaProyecto").hide();
+							$("#btnSolicitaProy").show();										
+							$("#btnCargarProy").show();
 						}
 						if(optionHTML == "División de estudios profesionales"){
 							$("#btnSolicitud").show("slow");
@@ -86,7 +110,8 @@ var inicio = function(){
 		// 	$("nav").show("slow");
 		// }
 	}
-		
+	}
+	
 	var llenarTablaProy = function(cargado){
 
 		// //$u = GetSQLValueString($_POST["aluctr"],"text");
