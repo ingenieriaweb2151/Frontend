@@ -28,7 +28,7 @@ function EntraAsesor($u,$c)
 
 function EntraVinculacion($u,$c)
 {
-	$conexion = $conectaBDpersonal('vinculacion');
+	$conexion = conectaBDpersonal('vinculacion');
 	$res = false;
 	$nombre = "";
 	$consulta = sprintf("select * from dperso where not (perdep ='0') and not (pernom = '.') and percve=%s and perpas=%s",$u,$c);
@@ -36,7 +36,7 @@ function EntraVinculacion($u,$c)
 	if($registro = mysql_fetch_array($resultado))
 	{
 		$res = true;
-    $nombre = $registro["pernom"]." ".$registro["perape"];
+    	$nombre = $registro["pernom"]." ".$registro["perape"];
 	}
 	$salidaJSON = array('respuesta' => $res,
                   'nombre'    => $nombre);

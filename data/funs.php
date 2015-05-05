@@ -10,7 +10,7 @@ function ValidaEntrada()
 	$c = GetSQLValueString($_POST["clave"],"text");
 	//global $u;
 	//print ($tipousuario);
-	if($tipousuario == "alumno")
+	if($tipousuario == 'alumno')
 	{
 		$respuesta = EntraAlumn($u,$c);
 		print json_encode($respuesta); 
