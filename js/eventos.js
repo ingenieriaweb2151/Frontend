@@ -1,4 +1,5 @@
 
+
 var inicio = function(){
 
 	var validaUsuario = function(){
@@ -154,6 +155,8 @@ var inicio = function(){
 		$("#altaProyectos").hide("slow");
 		$("#entregas").hide("slow");
 		$("#divSolicitudes").hide();
+		$("#solicitaProyecto").hide();
+
 
 	}
 
@@ -214,6 +217,8 @@ var inicio = function(){
 		$("#altaProyectos").hide("slow");
 		$("#entregas").hide("slow");
 		$("#divSolicitudes").hide();
+		$("#solicitaProyecto").hide();
+
 
 	}
 
@@ -225,6 +230,8 @@ var inicio = function(){
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
 		$("#divSolicitudes").hide();
+		$("#solicitaProyecto").hide();
+
 
 	 }
 
