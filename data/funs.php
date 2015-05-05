@@ -187,9 +187,34 @@ function enviarSolicitud()
 
 }
 
-
+function LlenarTablaSolicitud()
+{
+	$conexion = conectaBD();
+	$res = false;
+	$consulta = sprintf("SELECT * FROM solPendientes");
+	$resultado = mysql_query($consulta);
+	$renglones = "";
+		$renglones.="<tr class='warning'>";
+		$renglones.="<th>No. Control</th>";
+		$renglones.="<th>Alumno </th>";
+		$renglones.="<th>Proyecto</th>";
+		$renglones.="<th>Empresa</th>";
+		$renglones.="</tr>";
+		while ($registro = mysql_fetch_array($resultado)) {
+			$renglones.="<tr>";
+			$renglones.="<td>".$registro["aluctr"]."</td>";
+			$renglones.="<td>".$registro["alunom"]." ".$registro["apealumn"]." ".$registro["aluapm"]."</td>";
+			$renglones.="<td>".$registro["nombreproy"]."</td>";
+			$renglones.="<td>".$registro["nombreempr"]."</td>";
+			$renglones.="</tr>";
+			$res = true;
+		}
+		$salidaJSON = array('respuesta'	=> $res,
+						'renglones'	=> $renglones);
+		print json_encode($salidaJSON);
+}
 //GUARDA PROYECTO LEON
-
+/*
 function GuardaProyecto()
 {
 	$nombre_empresa     = GetSQLValueString($_POST["usuario"],"text");
@@ -214,7 +239,7 @@ function GuardaProyecto()
 	}
 	$salidaJSON = array('respuesta' => $respuesta);
 	print json_encode($salidaJSON);
-}
+}*/
 
 //Sección de opciones para elegir la funcion correspondiente que pide el .js
 $opcion =  $_POST ["opc"];
@@ -232,6 +257,9 @@ switch ($opcion)
 		break;
 	case 'enviarSolicitud':
 		enviarSolicitud();
+		break;
+	case 'LlenarTablaSolicitud':
+		LlenarTablaSolicitud();
 		break;
 	default:
 		# code...

@@ -1,15 +1,22 @@
 
 var inicio = function(){
+	//VARIABLES GLOBALES QUE GUARDAN EL NUMERO DE CONTROL DEL ALUMNO Y TIPO DE USUARIO
+	var datos = [];
+	var usuarioGlobal = [];
 
 	var validaUsuario = function(){
 		var u = $("#txtUsuario").val();
 		var c = $("#txtClave").val();
-		var parametros = "opc=validaAluProy"+"&aluctr="+u+"&alupas="+c+"&id="+Math.random();
+		var t = $("#ddlTipoUsuario").val();
+		var parametros = "opc=validaentrada"+"&tu="+t+"&usuario="+u+"&clave="+c+"&id="+Math.random();
+		//CAMBIE PARAMETROS, PARA HACERLOS GENERICOS Y NO SOLO DE ALUMNOS
+		//CAMBIE LA VARIABLE opc, PARA VALIDAR LA ENTRADA DE CADA UNO DE LOS USUARIOS
+		//var parametros = "opc=validaentrada"+"&usuario="+u+"&clave="+c+"&id="+Math.random();
 		if(u!="" && c!="")
 		{
 			$.ajax({
 				cache:false,
-				url: "data/funciones.php",
+				url: "data/funs.php",
 				type: "POST",
 				dataType: "json",
 				data: parametros,
@@ -163,7 +170,7 @@ var inicio = function(){
 			var parametros = "opc=llenarTablaProy"+"&id="+Math.random();
 			$.ajax({
 				cache:false,
-				url: "data/funciones.php",
+				url: "data/funs.php", //CAMBIE LA RUTA DEL ARCHIVO (paho)
 				type: "POST",
 				dataType: "json",
 				data: parametros,
@@ -359,7 +366,7 @@ var inicio = function(){
 		var parametros = "opc=LlenarTablaSolicitud"+"&id="+Math.random();
 			$.ajax({
 				cache:false,
-				url: "data/funciones.php",
+				url: "data/funs.php", //CAMBIE LA RUTA DE LAS FUNCIONES (paho)
 				type: "POST",
 				dataType: "json",
 				data: parametros,
@@ -398,7 +405,35 @@ var inicio = function(){
 		else
 			this.innerHTML = "Ver más";
 	}
-
+//FUNCION PARA CARGAR PROYECTO (paho)
+var CargarProy = function()
+	{
+		var seleccion = $("input[name='seleccionar']:checked").val();
+		var parametros = "opc=enviarSolicitud"+"&cargarproy="+seleccion+"&ncontrol="+datos["ncontrol"]+"&id="+Math.random();
+		
+		if($('.radProy').is(':checked'))
+		{
+			$.ajax({
+				cache: false,
+				url: 'data/funs.php',
+				type: 'POST',
+				dataType: 'json',
+				data: parametros,
+				success:function(response){
+					if(response.respuesta)
+						alert("Tu solicitud ha sido enviada.");
+					else
+						alert("No se a podido realizar la solicitud.");
+				},
+				error:function(xhr,ajaxOptions,x){
+					alert("Error de conexión.");
+				}
+			});
+		}
+		else
+			alert("Selecciona un proyecto");
+		
+	}
 
 	//Configuramos los eventos.
 	$("#btnEntrar").on("click",validaUsuario);
@@ -421,6 +456,12 @@ var inicio = function(){
 	$("#lm1").on("click",cambiaTexto);
 	$("#lm2").on("click",cambiaTexto);
 	$("#lm3").on("click",cambiaTexto);
+
+	//AGREGUE EVENTO PARA ENVIAR LAS SOLICITUDES
+	//$("#btnSolicita").on("click",Solicita);
+	$("#btnSolicitaProy").on("click",GuardaProyecto);
+	$("#btnCargarProy").on("click",CargarProy);
+
 
 
 }

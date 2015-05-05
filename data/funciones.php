@@ -255,13 +255,16 @@ function ValidaAluProy(){
 function LlenarTablaProy(){
 	$conexion = conectaBD();
 	//Preparar la consulta SQL
-	$consulta  = sprintf("select P.nombre as nombreproy,P.numresi,P.objetiv,P.justifi,P.nomresp,E.nombre as nombreemp,E.telef from proyectos P inner join empresas E ON P.cveempr=E.cveempr");
+	$consulta  = sprintf("SELECT * FROM BancoProy where numresi > 0");
+		
+
 	//Ejecutamos la consulta.
 	$resultado = mysql_query($consulta);
 	//Validamos los datos.
 	$res = false; //Saber el correcto
 	$renglones = "";
-		$renglones.="<tr class='warning'>";
+	
+		$renglones.="<tr>";
 		$renglones.="<th>Nombre Proyecto</th>";
 		$renglones.="<th>Objetivo</th>";
 		$renglones.="<th>Justificacion</th>";
@@ -269,9 +272,11 @@ function LlenarTablaProy(){
 		$renglones.="<th>Encargado</th>";
 		$renglones.="<th>Telefono</th>";
 		$renglones.="<th>Cupos</th>";
+		$renglones.="<th>Cargar</th>";
 		$renglones.="</tr>";
 		while($registro = mysql_fetch_array($resultado)){
 			$res = true;
+
 			$renglones.="<tr>";
 			$renglones.="<td>".$registro["nombreproy"]."</td>";
 			$renglones.="<td>".$registro["objetiv"]."</td>";
@@ -280,37 +285,15 @@ function LlenarTablaProy(){
 			$renglones.="<td>".$registro["nomresp"]."</td>";
 			$renglones.="<td>".$registro["telef"]."</td>";
 			$renglones.="<td>".$registro["numresi"]."</td>";
+			$renglones.="<td>";
+			$renglones.="<input type='radio' class='radProy' name='seleccionar' value=".$registro["clave"].">";
+			$renglones.="</td>";
 			$renglones.="</tr>";
 		}
+	//}
 	$salidaJSON = array('respuesta'	=> $res,
 						'renglones'	=> $renglones);
 	print json_encode($salidaJSON);
-}
-function LlenarTablaSolicitud()
-{
-	$conexion = conectaBD();
-	$res = false;
-	$consulta = sprintf("SELECT * FROM solPendientes");
-	$resultado = mysql_query($consulta);
-	$renglones = "";
-		$renglones.="<tr class='warning'>";
-		$renglones.="<th>No. Control</th>";
-		$renglones.="<th>Alumno </th>";
-		$renglones.="<th>Proyecto</th>";
-		$renglones.="<th>Empresa</th>";
-		$renglones.="</tr>";
-		while ($registro = mysql_fetch_array($resultado)) {
-			$renglones.="<tr>";
-			$renglones.="<td>".$registro["aluctr"]."</td>";
-			$renglones.="<td>".$registro["alunom"]." ".$registro["apealumn"]." ".$registro["aluapm"]."</td>";
-			$renglones.="<td>".$registro["nombreproy"]."</td>";
-			$renglones.="<td>".$registro["nombreempr"]."</td>";
-			$renglones.="</tr>";
-			$res = true;
-		}
-		$salidaJSON = array('respuesta'	=> $res,
-						'renglones'	=> $renglones);
-		print json_encode($salidaJSON);
 }
 //Opciones a ejecutar.
 $opcion = $_POST["opc"];
