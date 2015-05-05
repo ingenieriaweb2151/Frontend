@@ -1,16 +1,35 @@
 
+<<<<<<< HEAD
 
 var inicio = function(){
+=======
+var inicio = function(){
+	//PAHO
+	//VARIABLES GLOBALES QUE GUARDAN EL NUMERO DE CONTROL DEL ALUMNO Y TIPO DE USUARIO
+	var datos = [];
+	var usuarioGlobal = [];
+>>>>>>> origin/pahola
 
 	var validaUsuario = function(){
 		var u = $("#txtUsuario").val();
 		var c = $("#txtClave").val();
+<<<<<<< HEAD
 		var parametros = "opc=validaAluProy"+"&aluctr="+u+"&alupas="+c+"&id="+Math.random();
+=======
+		var t = $("#ddlTipoUsuario").val();
+		var parametros = "opc=validaentrada"+"&tu="+t+"&usuario="+u+"&clave="+c+"&id="+Math.random();
+		//CAMBIE PARAMETROS, PARA HACERLOS GENERICOS Y NO SOLO DE ALUMNOS
+		//CAMBIE LA VARIABLE opc, PARA VALIDAR LA ENTRADA DE CADA UNO DE LOS USUARIOS
+>>>>>>> origin/pahola
 		if(u!="" && c!="")
 		{
 			$.ajax({
 				cache:false,
+<<<<<<< HEAD
 				url: "data/funciones.php",
+=======
+				url: "data/funs.php",
+>>>>>>> origin/pahola
 				type: "POST",
 				dataType: "json",
 				data: parametros,
@@ -36,7 +55,15 @@ var inicio = function(){
 
 						$("#ttipo").show();
 						$("#usuario").show();
+<<<<<<< HEAD
 						
+=======
+						//PAHO
+						//ES INDISPENSABLE PASAR EL VALOR DEL USUARIO AL ARRAY DE datos[];
+						datos["ncontrol"] = u;
+						usuarioGlobal["tUsuario"];	
+
+>>>>>>> origin/pahola
 						var options = document.getElementById("ddlTipoUsuario").getElementsByTagName("option");
     					var optionHTML = options[document.getElementById("ddlTipoUsuario").selectedIndex].innerHTML;
 						document.getElementById("ttipo").innerHTML = optionHTML+":";
@@ -54,6 +81,7 @@ var inicio = function(){
 							$("#proyectoasign").show();
 							$("#pa").show();
 							$("#btnGuardaProyecto").hide();
+<<<<<<< HEAD
 							$("#entregaRev").hide();
 							$("#entregaSelect").hide();
 							
@@ -64,6 +92,9 @@ var inicio = function(){
 							document.getElementById("btnEntregas").innerHTML = "REVISIONES";
 						}
 
+=======
+						}
+>>>>>>> origin/pahola
 						if(optionHTML == "División de estudios profesionales"){
 							$("#btnSolicitud").show("slow");
 							$("#l").show();
@@ -74,12 +105,17 @@ var inicio = function(){
 
 							$("#btnSolicita").hide();
 							$("#btnCargarProy").hide();
+<<<<<<< HEAD
 						}
 
 						if(optionHTML == "Vinculacion"){
 							$("#proyectoasign").show();
 							$("#pa").show();
 							$("#btnGuardaProyecto").hide();
+=======
+
+							
+>>>>>>> origin/pahola
 						}
 
 						if(optionHTML != "Alumno"){
@@ -101,6 +137,7 @@ var inicio = function(){
 		// 	$("nav").show("slow");
 		// }
 	}
+<<<<<<< HEAD
 		
 	var llenarTablaProy = function(cargado){
 
@@ -128,6 +165,29 @@ var inicio = function(){
 		// 				$("#tablaproy").html(response.renglones);
 		// 		}
 		// 	});
+=======
+	var llenarTablaProy = function(cargado){
+		var c = cargado;
+		var parametros = "opc=llenarTablaProy"+"&cargado="+c+"&id="+Math.random();
+		$.ajax({
+				cache:false,
+				url: "data/funs.php",
+				type: "POST",
+				dataType: "json",
+				data: parametros,
+				success: function(response){
+					if(response.respuesta == true) 
+					{
+						//alert("Tabla proyecto");
+						$("#tablaproy").html(response.renglones);
+						$("#tablaproy").show();
+					}
+					else
+						alert("No hay proyectos");
+						$("#tablaproy").html(response.renglones);
+				}
+			});
+>>>>>>> origin/pahola
 	}
 
 	var validaAluProy = function(response){
@@ -168,6 +228,7 @@ var inicio = function(){
 		$("#altaProyectos").hide("slow");
 		$("#entregas").hide("slow");
 		$("#divSolicitudes").hide();
+<<<<<<< HEAD
 		$("#solicitaProyecto").hide();
 
 
@@ -197,6 +258,20 @@ var inicio = function(){
 			$.ajax({
 				cache:false,
 				url: "data/funciones.php",
+=======
+
+	}
+
+	
+	var traeBanco = function (){
+
+		//estoy me causaba ruido para traer la tabla de banco de proyectos
+		/*if(document.getElementById("usuario").innerHTML == ""){
+			var parametros = "opc=llenarTablaProy"+"&id="+Math.random();
+			$.ajax({
+				cache:false,
+				url: "data/funs.php", //CAMBIE LA RUTA DEL ARCHIVO (paho)
+>>>>>>> origin/pahola
 				type: "POST",
 				dataType: "json",
 				data: parametros,
@@ -207,8 +282,14 @@ var inicio = function(){
 					}
 				}
 			});
+<<<<<<< HEAD
 		}
 
+=======
+		}*/
+
+		
+>>>>>>> origin/pahola
 		$("#informacion").hide();
 		$("#documentacion").hide();
 		$("#entregas").hide();
@@ -218,6 +299,14 @@ var inicio = function(){
 		$("#entregas").hide("slow");
 		$("#divSolicitudes").hide();
 
+<<<<<<< HEAD
+=======
+		
+		//PAHO
+		llenarTablaProy(true);
+		$("#btnSolicita").show();
+		$("#btnCargarProy").show();
+>>>>>>> origin/pahola
 
 	}
 
@@ -230,8 +319,11 @@ var inicio = function(){
 		$("#altaProyectos").hide("slow");
 		$("#entregas").hide("slow");
 		$("#divSolicitudes").hide();
+<<<<<<< HEAD
 		$("#solicitaProyecto").hide();
 
+=======
+>>>>>>> origin/pahola
 
 	}
 
@@ -243,8 +335,11 @@ var inicio = function(){
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
 		$("#divSolicitudes").hide();
+<<<<<<< HEAD
 		$("#solicitaProyecto").hide();
 
+=======
+>>>>>>> origin/pahola
 
 	 }
 
@@ -392,8 +487,48 @@ var inicio = function(){
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
 		$("#entregas").hide("slow");
+<<<<<<< HEAD
 	}
 
+=======
+		//traeSolicitud();
+		var parametros = "opc=LlenarTablaSolicitud"+"&id="+Math.random();
+			$.ajax({
+				cache:false,
+				url: "data/funs.php", //CAMBIE LA RUTA DE LAS FUNCIONES (paho)
+				type: "POST",
+				dataType: "json",
+				data: parametros,
+				success: function(response){
+					if(response.respuesta == true){
+						$("#tablaSolicitud").html(response.renglones);
+						$("#tablaSolicitud").show();
+					}
+				}
+				
+			});
+	}
+/*
+	var traeSolicitud = function ()
+	{
+		var parametros = "opc=LlenarTablaSolicitud"+"&id="+Math.random();
+			$.ajax({
+				cache:false,
+				url: "data/funciones.php",
+				type: "POST",
+				dataType: "json",
+				data: parametros,
+				success: function(response){
+					if(response.respuesta == true){
+						$("#tablaSolicitud").html(response.renglones);
+						$("#tablaSolicitud").show();
+					}
+				}
+
+			});
+				
+	}*/
+>>>>>>> origin/pahola
 	var cambiaTexto = function (){
 		if (this.innerHTML == "Ver más")
 			this.innerHTML = "Ver menos";
@@ -401,6 +536,39 @@ var inicio = function(){
 			this.innerHTML = "Ver más";
 	}
 
+<<<<<<< HEAD
+=======
+//PAHO
+//FUNCION PARA CARGAR PROYECTO 
+var CargarProy = function()
+	{
+		var seleccion = $("input[name='seleccionar']:checked").val();
+		var parametros = "opc=enviarSolicitud"+"&cargarproy="+seleccion+"&ncontrol="+datos["ncontrol"]+"&id="+Math.random();
+		
+		if($('.radProy').is(':checked'))
+		{
+			$.ajax({
+				cache: false,
+				url: 'data/funs.php',
+				type: 'POST',
+				dataType: 'json',
+				data: parametros,
+				success:function(response){
+					if(response.respuesta)
+						alert("Tu solicitud ha sido enviada.");
+					else
+						alert("No se a podido realizar la solicitud.");
+				},
+				error:function(xhr,ajaxOptions,x){
+					alert("Error de conexión.");
+				}
+			});
+		}
+		else
+			alert("Selecciona un proyecto");
+		
+	}
+>>>>>>> origin/pahola
 
 	//Configuramos los eventos.
 	$("#btnEntrar").on("click",validaUsuario);
@@ -423,6 +591,15 @@ var inicio = function(){
 	$("#lm1").on("click",cambiaTexto);
 	$("#lm2").on("click",cambiaTexto);
 	$("#lm3").on("click",cambiaTexto);
+<<<<<<< HEAD
+=======
+	//PAHO
+	//AGREGUE EVENTO PARA ENVIAR LAS SOLICITUDES
+	//$("#btnSolicita").on("click",Solicita);
+	$("#btnSolicitaProy").on("click",GuardaProyecto);
+	$("#btnCargarProy").on("click",CargarProy);
+
+>>>>>>> origin/pahola
 
 
 }

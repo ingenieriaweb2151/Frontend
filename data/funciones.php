@@ -4,7 +4,11 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 {
   $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
 
+<<<<<<< HEAD
   $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+=======
+ // $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+>>>>>>> origin/pahola
 
   //Desactiva código HTML.
   $theValue = htmlentities($theValue);
@@ -45,7 +49,11 @@ function conectaBD()
 function ValidaEntrada()
 {
 	$u = GetSQLValueString($_POST["aluctr"],"text");
+<<<<<<< HEAD
 	$c = GetSQLValueString($_POST["alupas"],"text");
+=======
+	$c = GetSQLValueString(md5($_POST["alupas"]),"text");
+>>>>>>> origin/pahola
 	$tipousuario = GetSQLValueString($_POST["tu"],"text");
 	//Conectar a la BD
 	$conexion = conectaBD($tipousuario);
@@ -255,13 +263,24 @@ function ValidaAluProy(){
 function LlenarTablaProy(){
 	$conexion = conectaBD();
 	//Preparar la consulta SQL
+<<<<<<< HEAD
 	$consulta  = sprintf("select P.nombre as nombreproy,P.numresi,P.objetiv,P.justifi,P.nomresp,E.nombre as nombreemp,E.telef from proyectos P inner join empresas E ON P.cveempr=E.cveempr");
+=======
+	$consulta  = sprintf("SELECT * FROM BancoProy where numresi > 0");
+		
+
+>>>>>>> origin/pahola
 	//Ejecutamos la consulta.
 	$resultado = mysql_query($consulta);
 	//Validamos los datos.
 	$res = false; //Saber el correcto
 	$renglones = "";
+<<<<<<< HEAD
 		$renglones.="<tr class='warning'>";
+=======
+	
+		$renglones.="<tr>";
+>>>>>>> origin/pahola
 		$renglones.="<th>Nombre Proyecto</th>";
 		$renglones.="<th>Objetivo</th>";
 		$renglones.="<th>Justificacion</th>";
@@ -269,9 +288,17 @@ function LlenarTablaProy(){
 		$renglones.="<th>Encargado</th>";
 		$renglones.="<th>Telefono</th>";
 		$renglones.="<th>Cupos</th>";
+<<<<<<< HEAD
 		$renglones.="</tr>";
 		while($registro = mysql_fetch_array($resultado)){
 			$res = true;
+=======
+		$renglones.="<th>Cargar</th>";
+		$renglones.="</tr>";
+		while($registro = mysql_fetch_array($resultado)){
+			$res = true;
+
+>>>>>>> origin/pahola
 			$renglones.="<tr>";
 			$renglones.="<td>".$registro["nombreproy"]."</td>";
 			$renglones.="<td>".$registro["objetiv"]."</td>";
@@ -280,13 +307,25 @@ function LlenarTablaProy(){
 			$renglones.="<td>".$registro["nomresp"]."</td>";
 			$renglones.="<td>".$registro["telef"]."</td>";
 			$renglones.="<td>".$registro["numresi"]."</td>";
+<<<<<<< HEAD
 			$renglones.="</tr>";
 		}
+=======
+			$renglones.="<td>";
+			$renglones.="<input type='radio' class='radProy' name='seleccionar' value=".$registro["clave"].">";
+			$renglones.="</td>";
+			$renglones.="</tr>";
+		}
+	//}
+>>>>>>> origin/pahola
 	$salidaJSON = array('respuesta'	=> $res,
 						'renglones'	=> $renglones);
 	print json_encode($salidaJSON);
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/pahola
 //Opciones a ejecutar.
 $opcion = $_POST["opc"];
 switch ($opcion) {
@@ -308,7 +347,11 @@ switch ($opcion) {
 	case 'llenarTablaProy':
 		LlenarTablaProy();
 		break;
+<<<<<<< HEAD
 	case 'llenarTablaSolicitud':
+=======
+	case 'LlenarTablaSolicitud':
+>>>>>>> origin/pahola
 		LlenarTablaSolicitud();
 		# code...
 		break;

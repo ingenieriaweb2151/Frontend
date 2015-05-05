@@ -1,20 +1,48 @@
 body
 {
+<<<<<<< HEAD
   border-radius: 5px;
   margin: 0 auto;
+=======
+  /*border: 1px solid #000088;*/
+  border-radius: 5px;
+  margin: 0 auto;
+ /* max-width: 1024px;
+  min-width: 1024px;
+*/
+>>>>>>> origin/pahola
  max-width: 1349px;
   min-width: 1349px;
 }
 
+<<<<<<< HEAD
+=======
+/*
+#logotec{
+  margin-top:15px;
+  position: absolute;
+  top: -10px;
+  left: 1000px;
+  width: 120px;
+  height: 120px;
+}
+*/
+>>>>>>> origin/pahola
 #logoitc
 {
   margin-top:15px;
   position: absolute;
   margin-top: -120px;
+<<<<<<< HEAD
   /*left: 160px;*/
   width: 120px;
   height: 120px;
   margin-left: 20%;
+=======
+  left: 160px;
+  width: 120px;
+  height: 120px;
+>>>>>>> origin/pahola
 }
 #equipo
 {
@@ -41,11 +69,19 @@ body
 }
 #lm1
 {
+<<<<<<< HEAD
   margin-top: 118px;
 }
 #lm2
 {
   margin-top: 90px;
+=======
+  margin-top: 65px;
+}
+#lm2
+{
+  margin-top: 50px;
+>>>>>>> origin/pahola
 }
 #lm3
 {
@@ -108,8 +144,32 @@ header .pageheader
   font-weight: 300;
   position: relative;
   margin-top: 150px;
+<<<<<<< HEAD
   left: 25%;
 }
+=======
+  left: 480px; 
+}
+
+
+/*
+header nav ul
+{
+  text-align: center;
+}
+
+header nav ul li
+{
+  display: inline-block;
+}
+
+header .page-header
+{
+  margin-left: 15px;
+}
+*/
+
+>>>>>>> origin/pahola
 
 #solicitaProyecto{
   display: none;
@@ -150,11 +210,14 @@ header .pageheader
   position: relative;
   left: 500px;
 }
+<<<<<<< HEAD
 #btnGuardar
 {
   position: relative;
   left: 600px;
 }
+=======
+>>>>>>> origin/pahola
 
 #btnEntregas
 {
@@ -175,7 +238,10 @@ header .pageheader
 } 
 
 #entregas{
+<<<<<<< HEAD
   margin-top: 50px;
+=======
+>>>>>>> origin/pahola
    display: none;
 }
 #seccionlinks
@@ -199,6 +265,14 @@ header .pageheader
   text-align: center;
 }
 
+<<<<<<< HEAD
+=======
+/*#seccionlinks article{
+  display: inline-block;
+  text-align: top;
+}*/
+
+>>>>>>> origin/pahola
 #docsGenerales{
   display: none;
 }
@@ -238,6 +312,15 @@ margin-top: 100px;
   margin-top: -60px;
   display: none;
 }
+<<<<<<< HEAD
+=======
+
+/*
+#informacion{
+  text-align: center;
+}
+*/
+>>>>>>> origin/pahola
 #infoarticle{
   text-align: left;
 }
