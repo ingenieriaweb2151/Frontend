@@ -86,14 +86,11 @@ var inicio = function(){
 							
 
 						}
-
-						if(optionHTML == "Maestro"){
-							document.getElementById("btnEntregas").innerHTML = "REVISIONES";
-						}
+			
 
 						if(optionHTML == "División de estudios profesionales"){
 							$("#btnSolicitud").show("slow");
-							$("#l").show();
+							$("#l").show("slow");
 
 							$("#btnRegistrar").show();
 							$("#btnSolicitaProy").hide();
@@ -111,9 +108,9 @@ var inicio = function(){
 
 						if(optionHTML != "Alumno"){
 							$("btnSolicita").hide();
+							document.getElementById("btnEntregas").innerHTML = "REVISIONES";
 						}
-						$("#btnSalir").show("slow");
-
+					
 					}
 					else
 						alert("Nombre de usuario y/o contraseña incorrectos");
