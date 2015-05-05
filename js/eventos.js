@@ -1,5 +1,6 @@
 
 var inicio = function(){
+	//PAHO
 	//VARIABLES GLOBALES QUE GUARDAN EL NUMERO DE CONTROL DEL ALUMNO Y TIPO DE USUARIO
 	var datos = [];
 	var usuarioGlobal = [];
@@ -41,7 +42,11 @@ var inicio = function(){
 
 						$("#ttipo").show();
 						$("#usuario").show();
-						
+						//PAHO
+						//ES INDISPENSABLE PASAR EL VALOR DEL USUARIO AL ARRAY DE datos[];
+						datos["ncontrol"] = u;
+						usuarioGlobal["tUsuario"];	
+
 						var options = document.getElementById("ddlTipoUsuario").getElementsByTagName("option");
     					var optionHTML = options[document.getElementById("ddlTipoUsuario").selectedIndex].innerHTML;
 						document.getElementById("ttipo").innerHTML = optionHTML+":";
@@ -178,6 +183,7 @@ var inicio = function(){
 			});
 		}*/
 
+		
 		$("#informacion").hide();
 		$("#documentacion").hide();
 		$("#entregas").hide();
@@ -187,7 +193,11 @@ var inicio = function(){
 		$("#entregas").hide("slow");
 		$("#divSolicitudes").hide();
 
+		
+		//PAHO
 		llenarTablaProy(true);
+		$("#btnSolicita").show();
+		$("#btnCargarProy").show();
 
 	}
 
@@ -401,7 +411,9 @@ var inicio = function(){
 		else
 			this.innerHTML = "Ver más";
 	}
-//FUNCION PARA CARGAR PROYECTO (paho)
+
+//PAHO
+//FUNCION PARA CARGAR PROYECTO 
 var CargarProy = function()
 	{
 		var seleccion = $("input[name='seleccionar']:checked").val();
@@ -452,7 +464,7 @@ var CargarProy = function()
 	$("#lm1").on("click",cambiaTexto);
 	$("#lm2").on("click",cambiaTexto);
 	$("#lm3").on("click",cambiaTexto);
-
+	//PAHO
 	//AGREGUE EVENTO PARA ENVIAR LAS SOLICITUDES
 	//$("#btnSolicita").on("click",Solicita);
 	$("#btnSolicitaProy").on("click",GuardaProyecto);

@@ -141,12 +141,12 @@ function LlenarTablaProy(){
 						'renglones'	=> $renglones);
 	print json_encode($salidaJSON);
 }
+
 function enviarSolicitud()
 {	
 	$res = false;
 	$conexion = conectaBD();
 	$seleccion = GetSQLValueString($_POST["cargarproy"],"text");
-
 	$ncontrol = GetSQLValueString($_POST["ncontrol"],"sincomillas");
 	$consultlaProy = sprintf("SELECT cveproy,nombre, numresi FROM proyectos WHERE cveproy=%s",$seleccion);
 	$resultadoProy = mysql_query($consultlaProy);
