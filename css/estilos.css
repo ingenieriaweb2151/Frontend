@@ -11,9 +11,10 @@ body
   margin-top:15px;
   position: absolute;
   margin-top: -120px;
-  left: 160px;
+  /*left: 160px;*/
   width: 120px;
   height: 120px;
+  margin-left: 20%;
 }
 #equipo
 {
@@ -107,7 +108,7 @@ header .pageheader
   font-weight: 300;
   position: relative;
   margin-top: 150px;
-  left: 480px; 
+  left: 25%;
 }
 
 #solicitaProyecto{
