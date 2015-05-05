@@ -92,7 +92,9 @@
 		
 		<img id="logoitc" src="img/logoitc.png">
 		<h1> SISTEMA DE RESIDENCIAS </h1>
+
 	</div>
+	<hr>
 		<nav id="nav1">
 			<ul>
 				<li>
@@ -436,7 +438,7 @@
 					<th>Fecha Entrega</th>
 					<th>Nombre Asesor</th>
 					<th>Archivo Alumno</th>
-					<th>Revisión</th>
+					<th id="entregaRev" >Revisión</th>
 					<th>Comentarios</th>
 				</tr>                    
 				<tr>
@@ -447,7 +449,7 @@
                         <input type="file" name="archivo" id="archivo" />
 					</td>
 					<td>
-						<select>
+						<select id="entregaSelect">
 			  				<option value="1">Pendiente</option>
 			  				<option value="2">Rechazado</option>
 			  				<option value="3">Aceptado</option>

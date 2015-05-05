@@ -54,7 +54,16 @@ var inicio = function(){
 							$("#proyectoasign").show();
 							$("#pa").show();
 							$("#btnGuardaProyecto").hide();
+							$("#entregaRev").hide();
+							$("#entregaSelect").hide();
+							
+							
 						}
+
+						if(optionHTML == "Maestro"){
+							document.getElementById("btnEntregas").innerHTML = "REVISIONES";
+						}
+
 						if(optionHTML == "División de estudios profesionales"){
 							$("#btnSolicitud").show("slow");
 							$("#l").show();
@@ -65,8 +74,12 @@ var inicio = function(){
 
 							$("#btnSolicita").hide();
 							$("#btnCargarProy").hide();
+						}
 
-							
+						if(optionHTML == "Vinculacion"){
+							$("#proyectoasign").show();
+							$("#pa").show();
+							$("#btnGuardaProyecto").hide();
 						}
 
 						if(optionHTML != "Alumno"){
