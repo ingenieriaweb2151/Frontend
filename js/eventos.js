@@ -1,4 +1,5 @@
 
+
 var inicio = function(){
 
 	var datos = [];
@@ -75,11 +76,24 @@ var inicio = function(){
 							$("#proyectoasign").show();
 							$("#pa").show();
 							$("#btnGuardaProyecto").hide();
+
 							$("#btnSolicitaProy").show();										
 							$("#btnCargarProy").show();
+
+							$("#entregaRev").hide();
+							$("#entregaSelect").hide();
+							
+							
+
 						}
+
+						if(optionHTML == "Maestro"){
+							document.getElementById("btnEntregas").innerHTML = "REVISIONES";
+						}
+
 						if(optionHTML == "División de estudios profesionales"){
 							$("#btnSolicitud").show("slow");
+							$("#l").show();
 
 							$("#btnRegistrar").show();
 							$("#btnSolicitaProy").hide();
@@ -87,8 +101,12 @@ var inicio = function(){
 
 							$("#btnSolicita").hide();
 							$("#btnCargarProy").hide();
+						}
 
-							
+						if(optionHTML == "Vinculacion"){
+							$("#proyectoasign").show();
+							$("#pa").show();
+							$("#btnGuardaProyecto").hide();
 						}
 
 						if(optionHTML != "Alumno"){
@@ -177,8 +195,30 @@ var inicio = function(){
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
 		$("#entregas").hide("slow");
+		$("#divSolicitudes").hide();
+		$("#solicitaProyecto").hide();
+
+
 	}
 
+	var traeSolicitud = function ()
+	 {
+		var parametros = "opc=LlenarTablaSolicitud"+"&id="+Math.random();
+			$.ajax({
+				cache:false,
+				url: "data/funciones.php",
+				type: "POST",
+				dataType: "json",
+				data: parametros,
+				success: function(response){
+					if(response.respuesta == true){
+						$("#tablaSolicitud").html(response.renglones);
+						$("#tablaSolicitud").show();
+					}
+				}
+			});
+				
+	}
 	var traeBanco = function (){
 		if(document.getElementById("usuario").innerHTML == ""){
 			var parametros = "opc=llenarTablaProy"+"&id="+Math.random();
@@ -204,6 +244,8 @@ var inicio = function(){
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
 		$("#entregas").hide("slow");
+		$("#divSolicitudes").hide();
+
 
 	}
 
@@ -215,6 +257,10 @@ var inicio = function(){
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
 		$("#entregas").hide("slow");
+		$("#divSolicitudes").hide();
+		$("#solicitaProyecto").hide();
+
+
 	}
 
 	var traeEntregas = function(){
@@ -224,6 +270,10 @@ var inicio = function(){
 		$("#banco").hide();
 		$("#panelEntrada").hide("slow");
 		$("#altaProyectos").hide("slow");
+		$("#divSolicitudes").hide();
+		$("#solicitaProyecto").hide();
+
+
 	 }
 
 
@@ -258,6 +308,7 @@ var inicio = function(){
 		$("#seccionlinks").show();
 		$("#documentacion").hide();
 		$("#docsAmbos").hide("slow");
+		$("#divSolicitudes").hide();
 		$("#docsGenerales").show("slow");
 	}
 
@@ -359,6 +410,17 @@ var inicio = function(){
 			}
 		});
 	}
+	var Solicitudes = function()
+	{
+		$("#divSolicitudes").show();
+		$("#informacion").hide();
+		$("#documentacion").hide();
+		$("#entregas").hide();
+		$("#banco").hide();
+		$("#panelEntrada").hide("slow");
+		$("#altaProyectos").hide("slow");
+		$("#entregas").hide("slow");
+	}
 
 	var cambiaTexto = function (){
 		if (this.innerHTML == "Ver más")
@@ -380,6 +442,7 @@ var inicio = function(){
 	$("#txtNombreUsuario").on("keypress",teclaNombreUsuario);
 	$("#btnDivDocumentacion").on("click",traeDocumentacion);
 	$("#btnEliminaUsuario").on("click",EliminaUsuario);
+	$("#btnSolicitud").on("click",Solicitudes);
 	
 	$("#btnIngresar").on("click",Ingresar);
 	$("#btnRegistrar").on("click",solicitaProy);

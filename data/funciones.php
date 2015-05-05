@@ -8,19 +8,23 @@ function conectaBD()
 	//Servidor, Usuario, Contraseña
 	$conexion =  mysql_connect('localhost','root','');
 	//Seleccionamos la BD
+
 	mysql_select_db('residenciasitc',$conexion) or die ('No es posible conectarse a la BD residencias');
+
 	return $conexion;
 }	
 
 
 function ValidaEntrada()
 {
+
 	$tipousuario = $_POST["tu"];
 	$u = GetSQLValueString($_POST["usuario"],"text");
 	$c = GetSQLValueString($_POST["clave"],"text");
 	//global $u;
 	//print ($tipousuario);
 	if($tipousuario == "alumno")
+
 	{
 		
 		$respuesta = EntraAlumn($u,$c);
@@ -136,7 +140,7 @@ function EliminaUsuario()
 
 function ValidaAluProy(){
 	$u = GetSQLValueString($_POST["aluctr"],"text");
-	$c = GetSQLValueString(md5($_POST["alupas"]),"text");
+	$c = GetSQLValueString($_POST["alupas"],"text");
 	//Conectar a la BD
 	$conexion = conectaBD();
 	//Preparar la consulta SQL
@@ -332,6 +336,11 @@ switch ($opcion) {
 		break;
 	case 'llenarTablaProy':
 		LlenarTablaProy();
+		break;
+	case 'llenarTablaSolicitud':
+		LlenarTablaSolicitud();
+		# code...
+		break;
 	default:
 		# code...
 		break;
