@@ -103,7 +103,7 @@
 					|		
 				<li>
 					<button id="btnDivDocumentacion">
-					 		DOCUMENTOS	
+					 DOCUMENTOS	
 					</button>
 				</li>
 						|
@@ -123,18 +123,17 @@
 					INGRESAR
 					</button>
 				</li>
- 						
+ 					<span id="l"> |</span>
 				<li>
 					<button id="btnSolicitud">
-					SOLICITUDES							
+					SOLICITUDES						
 					</button>
 				</li>
-						|
-				<li>
+			<!--	<li>
 					<button id="btnSalir">
 					SALIR
 					</button>
-				</li>
+				</li>-->
 			</ul>
 		</nav>
 	</header>
@@ -258,12 +257,19 @@
   	</article>	
 </section>	
 </div>
+	<div id="divSolicitudes">
+		<h3>Solicitud de Proyectos</h3>
+		<table id="tablaSolicitud" class="table table-striped table-hover warning"> 
+		</table>
+
+	</div>
 
 	<div id="banco">
 		<!-- <div class="container"> -->
 			<h3>Banco de Proyectos</h3>
 			<table id="tablaproy" class="table table-striped table-hover warning">
 			</table>
+
 			<button class="btn btn-success" id="btnRegistrar">
 				<span class="glyphicon glyphicon-pencil"></span>
 					Registrar Proyecto

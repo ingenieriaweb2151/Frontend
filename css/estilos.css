@@ -48,18 +48,21 @@ body
   position: relative;
   left: 200px;
 }
-
+#divSolicitudes
+{
+  display: none;
+}
 #lm1
 {
   margin-top: 65px;
 }
 #lm2
 {
-  margin-top: 40px;
+  margin-top: 50px;
 }
 #lm3
 {
-  margin-top: 15px;
+  margin-top: 40px;
 }
 #seccionInfo article
 {
@@ -82,7 +85,8 @@ footer
 header nav ul button
 {
   width: 144px;
-height: 18px;
+  height: 18px;
+  height: 20%;
   font-weight: 600;
   font-family: 'Open Sans', sans-serif;
   background-color:transparent;
@@ -90,7 +94,8 @@ height: 18px;
 }
 header nav ul 
 {
-  left:350px;
+
+  left:25%;
   position: absolute;
   /*margin-top:20px;*/
 }
@@ -184,7 +189,10 @@ header .page-header
 {
   display: none;
 } 
-
+#l
+{
+  display: none;
+}
 #btnSalir
 {
   display: none;
@@ -196,7 +204,7 @@ header .page-header
 #seccionlinks
 {
   position: relative;
-  margin-top: 100px;
+  margin-top: 50px;
   left: 200px;
 }
 

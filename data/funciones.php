@@ -307,6 +307,11 @@ switch ($opcion) {
 		break;
 	case 'llenarTablaProy':
 		LlenarTablaProy();
+		break;
+	case 'llenarTablaSolicitud':
+		LlenarTablaSolicitud();
+		# code...
+		break;
 	default:
 		# code...
 		break;
