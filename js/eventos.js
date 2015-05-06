@@ -1,4 +1,3 @@
-
 var inicio = function(){
 	//PAHO
 	//VARIABLES GLOBALES QUE GUARDAN EL NUMERO DE CONTROL DEL ALUMNO Y TIPO DE USUARIO
@@ -100,7 +99,8 @@ var inicio = function(){
 	}
 	var llenarTablaProy = function(cargado){
 		var c = cargado;
-		var parametros = "opc=llenarTablaProy"+"&cargado="+c+"&id="+Math.random();
+		//Agrege el numero de control del alumno a los parametros, para verificar tiene proyecto asignado
+		var parametros = "opc=llenarTablaProy"+"&cargado="+c+"&ncontrol="+datos["ncontrol"]+"&id="+Math.random();
 		$.ajax({
 				cache:false,
 				url: "data/funs.php",
@@ -447,8 +447,9 @@ var CargarProy = function()
 	var AsignaProy = function()
 	{	
 		var valorBoton = $(".btnAsignar").attr("value");
-		alert("funciono "+valorBoton);
-		var parametros = "opc=AsignaProy"+"&ncontrol="+valorBoton+"&id="+Math.random();
+		var asesor = $(".ddlAsesores").val(); //obtenemos el id del asesor y lo mandamos en los parametros
+		//alert("ID del asesor: "+asesor);
+		var parametros = "opc=AsignaProy"+"&ncontrol="+valorBoton+"&asesor="+asesor+"&id="+Math.random();
 		$.ajax({
 				cache: false,
 				url: 'data/funs.php',

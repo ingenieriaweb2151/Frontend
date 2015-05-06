@@ -38,7 +38,8 @@ function ValidaEntrada()
 
 function LlenarTablaProy()
 {
-	$llenarProyectos = MostrarBanco();
+	$ncontrol = GetSQLValueString($_POST["ncontrol"],"sincomillas");
+	$llenarProyectos = MostrarBanco($ncontrol);
 	print json_encode($llenarProyectos);
 }
 
@@ -63,7 +64,8 @@ function LlenarTablaSolicitud()
 function AsignaProy()
 {
 	$aluctr = GetSQLValueString($_POST["ncontrol"],"sincomillas");
-	$asignaproy = AsignarProyecto($aluctr);
+	$asesor = $_POST["asesor"];
+	$asignaproy = AsignarProyecto($aluctr,$asesor);
 	print json_encode($asignaproy);
 }
 //Funcion para cancelar las solicitudes
