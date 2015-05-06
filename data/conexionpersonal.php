@@ -6,7 +6,7 @@ function conectaBDpersonal($tipousuario)
   mysql_select_db('residenciasitc',$conexion) or die ('No es posible conectarse a la BD residenciasitc');
   return $conexion;
 }
-
+ //Valida la entrada de un maestro buscando su usuario (percve) y contraseña (perpas) en la BD
 function EntraAsesor($u,$c)
 {	
 	$conexion = conectaBDpersonal('asesor');
@@ -26,6 +26,7 @@ function EntraAsesor($u,$c)
    
 }
 
+ //Valida la entrada de un maestro buscando su usuario (percve) y contraseña (perpas) en la BD
 function EntraVinculacion($u,$c)
 {
 	$conexion = conectaBDpersonal('vinculacion');
@@ -36,7 +37,7 @@ function EntraVinculacion($u,$c)
 	if($registro = mysql_fetch_array($resultado))
 	{
 		$res = true;
-    	$nombre = $registro["pernom"]." ".$registro["perape"];
+    $nombre = $registro["pernom"]." ".$registro["perape"];
 	}
 	$salidaJSON = array('respuesta' => $res,
                   'nombre'    => $nombre);
@@ -44,6 +45,7 @@ function EntraVinculacion($u,$c)
     return $salidaJSON;
 }
 
+ //Valida la entrada de un maestro buscando su usuario (percve) y contraseña (perpas) en la BD
 function EntraDivespro($u,$c)
 {
 	$conexion = conectaBDpersonal('divestpro');
@@ -62,4 +64,100 @@ function EntraDivespro($u,$c)
     return $salidaJSON;
 }
 
+//Muestra al usuario division de estudios profecionales las solicitudes de proyecto enviadas por el alumno
+function SolicitudesPendientes()
+{
+	$conexion = conectaBDpersonal('divestpro');
+	$res = false;
+	//solPendientes es una vista
+	//Trae todas las solicitudes pendientes
+	$consulta = sprintf("SELECT * FROM solPendientes");
+	$resultado = mysql_query($consulta);
+	$renglones = "";
+		$renglones.="<tr class='warning'>";
+		$renglones.="<th>No. Control</th>";
+		$renglones.="<th>Alumno </th>";
+		$renglones.="<th>Proyecto</th>";
+		$renglones.="<th>Empresa</th>";
+		$renglones.="<th>Seleccionar</th>";
+		$renglones.="</tr>";
+		while ($registro = mysql_fetch_array($resultado)) {
+			$renglones.="<tr>";
+			$renglones.="<td>".$registro["aluctr"]."</td>";
+			$renglones.="<td>".$registro["alunom"]." ".$registro["apealumn"]." ".$registro["aluapm"]."</td>";
+			$renglones.="<td>".$registro["nombreproy"]."</td>";
+			$renglones.="<td>".$registro["nombreempr"]."</td>"; 
+			$renglones.="<td><button class=' btnAsignar btn btn-success' value=".$registro["aluctr"].">
+						<span class='glyphicon glyphicon-ok' value=></span>
+						Asignar 
+						<button class='btnCancelar btn btn-danger' value=".$registro["aluctr"].">
+						<span class='glyphicon glyphicon-remove'></span>
+						Cancelar</td>";
+			$renglones.="</tr>";
+			$res = true;
+			//El value de cada uno de los botones es el aluctr, para poder manupilar las acciones
+			//de dar de baja o asignar.
+		}
+		$salidaJSON = array('respuesta'	=> $res,
+						'renglones'	=> $renglones);
+		return $salidaJSON;
+}
+
+
+
+function BajaSolicitud($aluctr)
+{
+	$conexion = conectaBDpersonal('divestpro');
+	$consulta = sprintf("SELECT * FROM solicitudes WHERE aluctr=%s",$aluctr);
+	$resultado = mysql_query($consulta);
+	if($renglones = mysql_fetch_array($resultado))
+		$idProy = $renglones["cveproy"];
+	$res = false;
+	//Elimina de la tabla solicitudes la solicitud enviada por el alumno.
+	$consultaDelete =sprintf("DELETE FROM solicitudes WHERE aluctr=%s",$aluctr);
+	$resultadoDelete = mysql_query($consultaDelete);
+	//Si la solicitud fue cancelada, el numero residentes incrementa en uno.
+	if(mysql_affected_rows()>0)
+	{
+
+		$res = true;
+		$updateProy = sprintf("UPDATE proyectos SET numresi=numresi+1 WHERE cveproy =%s",$idProy);
+		mysql_query($updateProy);
+
+	}
+	$salidaJSON = array('respuesta'	=> $res);
+	return $salidaJSON;
+}
+
+function AsignarProyecto($aluctr)
+{
+	
+	$conexion = conectaBDpersonal('divestpro');
+	$res = false;
+	$consulta = sprintf("SELECT * FROM solPendientes  WHERE aluctr=%s",$aluctr);
+	$resultado = mysql_query($consulta);
+	if($renglones = mysql_fetch_array($resultado))
+	{
+		//de la vista solPendientes sacamos los datos que necesitamos para agregar al alumo
+		//en su proyecto asignado.
+		$pdocve = $renglones["pdocve"];
+		$cveproy = $renglones["cveproy"];
+		$cveempr = $renglones["cveempr"];
+		
+		$consultaInsert = sprintf("INSERT INTO asignproyectos(pdocve, aluctr, cveproy, cveempr) 
+									VALUES (%s,%s,%s,%s)",$pdocve,$aluctr,$cveproy,$cveempr);
+		$resultadoInsert = mysql_query($consultaInsert);
+		if(mysql_affected_rows()>0)
+		{
+			//Al pasar a la tabla asignaproyecto se elimina al alumno de la tabla solicitudes.
+			$res = true;
+			$consultaDelete =sprintf("DELETE FROM solicitudes WHERE aluctr=%s",$aluctr);
+			$resultadoDelete = mysql_query($consultaDelete);
+		}
+			
+	}
+	$salidaJSON = array('respuesta'	=> $res);
+	return $salidaJSON;
+	
+}
 ?>
